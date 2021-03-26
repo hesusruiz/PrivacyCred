@@ -13,20 +13,20 @@
             "@context": [
                   "https://www.w3.org/2018/credentials/v1",
                   "https://alastria.github.io/identity/credentials/v1",
-                  "https://safeisland.org/.well-known/w3c-covid-test/v1"
+                  "https://privacycred.org/.well-known/privacycred/v1"
             ],
             "type": [
                   "VerifiableCredential",
                   "AlastriaVerifiableCredential",
-                  "SafeIslandCovidTestResult"
+                  "PrivacyCredential"
             ],
             "credentialSubject": {
-                  "covidTestResult": {
-                        "See CovidCredential": "Any test like PCR, LAMP, Virolens"
+                  "credentalData": {
+                        "Any credential": ""
                   },
                   "issuedAt": [
                         "List of networks",
-                        "alastria.redt"
+                        "networkId.alastria"
                   ],
                   "levelOfAssurance": 2
             }
