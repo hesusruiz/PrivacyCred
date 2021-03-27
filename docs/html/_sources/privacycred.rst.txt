@@ -10,7 +10,6 @@
 :Author: Jesus Ruiz <hesus.ruiz@gmail.com>
 
 
-
 PrivacyConsent is a system that allows a citizen to manage informed consent to two independent entities to exchange personal data among them for a very specific purpose. PrivacyConsent is based on PrivacyCred, a generic credential system which is designed to be secure, privacy-preserving, scalable, performant and robust.
 
 PrivacyCred is designed specifically for some important use cases where especially sensitive personal data is handled, like when people at risk of exclusion is involved or with some health data flows. A high degree of privacy and unlinkability is the first design criteria. It also supports scenarios where physical, on-person verification of identity of holder is needed and where normal W3C Verifiable Credential flows are not fully suitable as they are normally designed currently.
