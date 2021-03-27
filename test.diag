@@ -1,0 +1,13 @@
+actdiag {
+  gen_cred -> convert -> check_kyc
+
+  lane issuer {
+     label = "Issuer"
+     gen_cred [label = "Start generation of credential"];
+     check_kyc [label = "Obtain credential data from KYC"];
+  }
+  lane citizen {
+     label = "Citizen"
+     convert [label = "Convert reST to Image"];
+  }
+}
