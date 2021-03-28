@@ -1,0 +1,32 @@
+@startuml PrivacyConsent_OverallFlow
+
+|#aaaaaa|Local Government|
+start
+if (color?) is (red) then
+#pink:**action red**;
+:foo1;
+else (not red)
+|#lightgray|Citizen|
+#lightgray:**action not red**;
+:foo2;
+endif
+|Business|
+#lightblue:foo3;
+:foo4;
+|Final_Actor|
+#palegreen:foo5;
+stop
+
+@enduml
+
+@startuml icons
+title: <size:50><color:red><&heart></color></size>Use of OpenIconic
+class Wifi
+note left
+Click on <&wifi>
+end note
+@enduml
+
+@startuml listSkinParams
+help skinparams
+@enduml

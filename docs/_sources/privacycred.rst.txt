@@ -115,8 +115,9 @@ Main components
 
 The main components are the following:
 
-.. table:: Main components
-    :widths: 2,4
+.. table:: Main components of the system
+    :width: 100%
+    :widths: 3,9
 
     +--------------------------+-------------------------------------------------------------------------------------------+
     | **Issuer Entity**        | The juridical person that digitally signs and issues a credential to the User.            |
