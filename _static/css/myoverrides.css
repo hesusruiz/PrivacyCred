@@ -18,3 +18,7 @@
 .wy-table-responsive {
     overflow: visible !important;
 }
+
+.wy-nav-top {
+    background-color: #001064;
+}

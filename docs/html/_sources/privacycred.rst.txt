@@ -666,3 +666,4 @@ The easiest one to use is ``/api/verifiable-credential/v1/verifiable-credential-
 ``/api/did/v1/identifiers/(string:DID)`` is the Universal Resolver API. The client application will have to perform the validations that the server does in the previous call.
     
 
+
