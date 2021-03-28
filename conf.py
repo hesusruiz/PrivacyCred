@@ -88,3 +88,11 @@ html_theme_options = {
 
 
 latex_engine = 'xelatex'
+
+latex_elements = {
+    "papersize": "a4paper",
+    "pointsize": "12pt",
+    "extraclassoptions": "openany"
+}
+
+latex_show_urls = 'footnote'

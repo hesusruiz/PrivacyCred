@@ -8,21 +8,10 @@
 
 :Version: 0.1.0
 :Author: Jesus Ruiz <hesus.ruiz@gmail.com>
-
-
-PrivacyConsent is a system that allows a citizen to manage informed consent to two independent entities to exchange personal data among them for a very specific purpose. PrivacyConsent is based on PrivacyCred, a generic credential system which is designed to be secure, privacy-preserving, scalable, performant and robust.
-
-PrivacyCred is designed specifically for some important use cases where especially sensitive personal data is handled, like when people at risk of exclusion is involved or with some health data flows. A high degree of privacy and unlinkability is the first design criteria. It also supports scenarios where physical, on-person verification of identity of holder is needed and where normal W3C Verifiable Credential flows are not fully suitable as they are normally designed currently.
-    
-The document is structured as follows.
-
-The first part describes the PrivacyCred system, including the data model, interfaces and main interactions.
-
-The second part describes the PrivacyConsent flows on top of PrivacyCred for a very strict use case: managing the informed consent of a user in the collective of people at risk of exclusion.
     
     
-PrivacyCred description
-=======================
+PrivacyCred
+===========
 
 Requirements
 ------------
@@ -48,13 +37,23 @@ Main design principles and business requirements
 The design of the trust framework for interoperable issuing of certificates and verification of their integrity and authenticity relies on key design principles listed below. The list is not prioritised. Instead, the trust framework that is specified later in the document attempts to optimise as many of the key design principles as possible.
 
 Data protection (including data minimisation, purpose limitation, etc.)
-    The trust framework should protect the data of the involved individual stakeholders (most importantly, certificate holders). This covers several data protection dimensions catered by the General Data Protection Regulation, including purpose limitation and data minimisation. In practice, only the bare minimum set of data that is required for the supported use cases should be processed (data minimisation) and the purpose of data collection should be checked against the use cases (purpose limitation). Similarly, only the bare minimum set of data that is required for the supported use cases should be presented to a specific verifier (data minimisation) and the purpose of data presentation should be checked against the use cases (purpose limitation). In order to achieve the latter, the trust framework may support different presentation datasets for different verifier scenarios. The data protection principle has a strong impact on the specification of the Minimum Dataset and the design of the use cases of the trust framework.
+    The trust framework should protect the data of the involved individual stakeholders (most importantly, certificate holders). This covers several data protection dimensions catered by the General Data Protection Regulation, including purpose limitation and data minimisation. In practice, only the bare minimum set of data that is required for the supported use cases should be processed (data minimisation) and the purpose of data collection should be checked against the use cases (purpose limitation).
+    
+    Similarly, only the bare minimum set of data that is required for the supported use cases should be presented to a specific verifier (data minimisation) and the purpose of data presentation should be checked against the use cases (purpose limitation).
+    
+    In order to achieve the latter, the trust framework may support different presentation datasets for different verifier scenarios. The data protection principle has a strong impact on the specification of the Minimum Dataset and the design of the use cases of the trust framework.
 
 Data security and privacy by design and by default
-    Abuse of data by actors (especially, the certificate verifiers and holders) and forgery should be prevented by any reasonable means. The trust framework should by design and default ensure the security and the privacy of data in the compliant implementations, ensuring both security and privacy. Available tools should be used for restricting access to data and preventing malicious use of data, while the establishing of the authenticity of data and its link to the certificate holder should be ensured. The design should prevent the collection of identifiers or other similar data which might be crossreferenced with other data and re-used for tracking (‘Unlinkability’).
+    Abuse of data by actors (especially, the certificate verifiers and holders) and forgery should be prevented by any reasonable means. The trust framework should by design and default ensure the security and the privacy of data in the compliant implementations, ensuring both security and privacy.
+    
+    Available tools should be used for restricting access to data and preventing malicious use of data, while the establishing of the authenticity of data and its link to the certificate holder should be ensured. The design should prevent the collection of identifiers or other similar data which might be crossreferenced with other data and re-used for tracking (‘Unlinkability’).
 
 Inclusiveness (especially medium-neutrality)
-    The trust framework should be inclusive especially towards the individual citizen (‘no citizen left behind’). The design of the trust framework should attempt to maximize its support for diverse contexts (e.g., high resource vs low resource contexts). To enable this, the trust framework should support a spectrum of certificate presentation media from plain paper certificate to augmented paper certificates (e.g., paper certificate with printed machinereadable parts such as barcodes, QR codes, Machine Readable Zones) and to purely digital certificates (e.g., in-app certificates).
+    The trust framework should be inclusive especially towards the individual citizen (‘no citizen left behind’).
+    
+    The design of the trust framework should attempt to maximize its support for diverse contexts (e.g., high resource vs low resource contexts).
+    
+    To enable this, the trust framework should support a spectrum of certificate presentation media from plain paper certificate to augmented paper certificates (e.g., paper certificate with printed machinereadable parts such as barcodes, QR codes, Machine Readable Zones) and to purely digital certificates (e.g., in-app certificates).
 
     The PrivacyCred system supports paper certificates, augmented paper certificates, QR codes and purely digital certificates.
 
@@ -63,23 +62,31 @@ Inclusiveness (especially medium-neutrality)
     However, the user can install the PWA in the device if the user so wishes to facilitate future uses. In any case, the system does not require any type of registration of the identity of the user.
 
 Simplicity and user-friendliness
-    It is very important that the trust framework is designed with simplicity and user-friendliness of the possible implementation of digital certificate systems in mind. More formally, the trust framework should not have features or functionalities that would unnecessarily complicate the resulting implementation of a digital certificate system or make them unnecessarily difficult to use. Lack of simplicity could increase the time it takes to implement the compliant digital certificate systems, while lack of user friendliness could hinder the uptake of the resulting implementations. User-friendliness is relevant for quick and easy processing, specifically to certificate holders and to verifiers.
+    It is very important that the trust framework is designed with simplicity and user-friendliness of the possible implementation of digital certificate systems in mind.
+    
+    More formally, the trust framework should not have features or functionalities that would unnecessarily complicate the resulting implementation of a digital certificate system or make them unnecessarily difficult to use. Lack of simplicity could increase the time it takes to implement the compliant digital certificate systems, while lack of user friendliness could hinder the uptake of the resulting implementations. User-friendliness is relevant for quick and easy processing, specifically to certificate holders and to verifiers.
 
     The PrivacyCred system follows the rule of **Occam's Razor** eliminating any feature or functionality which is not strictly required for the use case.
 
     This not only provides simplicity and user-friendlyness but also provides a system easier to understand and maintain which is more secure and robust.
 
 Implementation flexibility
-    The trust framework specifications should provide implementers with a variety of options when developing digital certificate systems according to the trust framework specifications. This key design principle aims at reducing the implementation time and leveraging/reusing existing infrastructures in involved entities. To satisfy this principle, the trust framework specifies, whenever possible, a list of alternative methods, flows, architectures and implementation options, for example alternative presentation media, verification options, implementation technologies, etc. whilst still guaranteeing the same level of trustworthiness.
+    The trust framework specifications should provide implementers with a variety of options when developing digital certificate systems according to the trust framework specifications. This key design principle aims at reducing the implementation time and leveraging/reusing existing infrastructures in involved entities.
+    
+    To satisfy this principle, the trust framework specifies, whenever possible, a list of alternative methods, flows, architectures and implementation options, for example alternative presentation media, verification options, implementation technologies, etc. whilst still guaranteeing the same level of trustworthiness.
 
 Modularity and scalability
-    This is strongly linked with the previous key design principle. The trust framework architecture should be modular and easily scalable, for instance, to additional usage scenarios, use cases and types of certificates. The trust framework already supports different usage scenarios (e.g. alternative settings in which certificates may be requested or verification may take place).
+    This is strongly linked with the previous key design principle. The trust framework architecture should be modular and easily scalable, for instance, to additional usage scenarios, use cases and types of certificates.
+    
+    The trust framework already supports different usage scenarios (e.g. alternative settings in which certificates may be requested or verification may take place).
 
 Open standards
     The trust framework should rely for its implementations on open standards, to the extent that this is possible. This will greatly contribute to the interoperability of the resulting implementations, in addition combined with open governance and open source implementations, it will instil trust in the involved stakeholders.
 
 Cross-border interoperability
-    Implementations of certificates that comply with the specifications of the trust framework should be interoperable, and not only at the national level. This means that if Countries A and B implement the specifications, it should be possible for a verifier in Country B to verify a digital vaccination certificate that has been issued in Country A.
+    Implementations of certificates that comply with the specifications of the trust framework should be interoperable, and not only at the national level.
+    
+    This means that if Countries A and B implement the specifications, it should be possible for a verifier in Country B to verify a digital vaccination certificate that has been issued in Country A.
 
     Cross-border interoperability should be ensured across EU and EEA countries. The Trust Framework should not prevent interoperability with the solutions designed on a global level.
 
@@ -95,9 +102,11 @@ The recommended methods for performing ID binding and verification are based on 
 
 Contrary to many SSI Verifiable Credentials implementations, the PrivacyCred system does not require any registration on the part of the user like registering her DID in the blockchain or any other repository, as the system relies in pre-existing identification processes (e.g., KYC for private companies).
 
-The only personal information managed by the system is the one in the minimum dataset as specified in this document.
-The personal data elements are incorporated to the certificate and not used for any other thing or purpose.
-It is assumed that the minimal person identification data specified in this document can be used to perform the ID binding with a national ID, passport or any other suitable nationally issued identity document.
+The only personal information managed by the system is the one in the minimum dataset as specified
+in this document. The personal data elements are incorporated to the certificate and not used for
+any other thing or purpose. It is assumed that the minimal person identification data specified in
+this document can be used to perform the ID binding with a national ID, passport or any other
+suitable nationally issued identity document.
 
 
 PrivacyCred: General description of the system
@@ -115,59 +124,33 @@ Main components
 
 The main components are the following:
 
-.. table:: Main components of the system
-    :width: 100%
-    :widths: 3,9
 
-    +--------------------------+-------------------------------------------------------------------------------------------+
-    | **Issuer Entity**        | The juridical person that digitally signs and issues a credential to the User.            |
-    |                          | The Issuer Entity employs or subcontracts the actual people performing the process        |
-    |                          | called Issuer Operator in the diagram. The Issuer Entity assumes full responsibility for  |
-    |                          | the legal implications of the issueance process, especially GDPR compliance. The Issuer   |
-    |                          | Entity acts as a Data Controller with respect to the Personal Information collected from  |
-    |                          | the Citizen when the certification is issued.                                             |
-    +--------------------------+-------------------------------------------------------------------------------------------+
-    | **Issuer Operator**      | The natural person that is employed/subcontracted by the Issuer Entity to actually        |
-    |                          | drive the process of issuing the credential on behalf of the Issuer Entity.               |
-    +--------------------------+-------------------------------------------------------------------------------------------+
-    | **Issuer Operator App**  | This is the application used by the natural person that drives the issuance of            |
-    |                          | the credential. The application allows the operator to enter the details of the user      |
-    |                          | and of the credential and issues the credential to the user on behalf of the              |
-    |                          | Issuer Entity. It is the responsibility of the Issuer Entity to ensure that the           |
-    |                          | Operator performs the process in the right way.                                           |
-    +--------------------------+-------------------------------------------------------------------------------------------+
-    | **Citizen**              | This is the natural person that receives a credential and may present it when needed.     |
-    +--------------------------+-------------------------------------------------------------------------------------------+
-    | **Citizen  WebApp**      | This is the application used by the end user to manage the credentials.                   |
-    |                          | The reference implementation is not a native application but rather a PWA                 |
-    |                          | (Progressive Web App), which can be used either as a normal web app                       |
-    |                          | (without installation) or it can be installed and used in a very similar way              |
-    |                          | to a native mobile app. The characteristics of this app are explained later.              |
-    +--------------------------+-------------------------------------------------------------------------------------------+
-    | **Verifier Entity**      | A juridical person that verifies the credential. In the process of verification, the      |
-    |                          | Verifier Entity receives personal data from the Citizen. The Verifier Entity is           |
-    |                          | responsible for compliance of all applicable regulations, including GDPR.                 |
-    +--------------------------+-------------------------------------------------------------------------------------------+
-    | **Verifier Operator**    | A natural person that verifies the credential. It is important to distinguish between     |
-    |                          | natural and juridical persons in the verification process because the flows may be        |
-    |                          | different as the regulatory implications may be different. The diagram does not           |
-    |                          | explicitly mention the Verifier Person, but it will be described in detail later          |
-    |                          | in the document.                                                                          |
-    +--------------------------+-------------------------------------------------------------------------------------------+
-    | **Verifier App**         | The application used to verify the credential presented by the user. The reference        |
-    |                          | application can be used either by an employee of a Verifier Entity or by an individual    |
-    |                          | natural person, as explained later.                                                       |
-    +--------------------------+-------------------------------------------------------------------------------------------+
-    | **Public-Permissioned**  | This is a general-purpose blockchain network which is used to implement the               |
-    | **blockchain network**   | Trust Framework allowing the efficient and secure verification of credentials.            |
-    |                          | It is never used to store personal information. Personal information management is        |
-    |                          | the responsibility of the legal entities Issuer Entity and Verifier Entity,               |
-    |                          | and they are responsible for compliance to applicable regulations, especially GDPR.       |
-    |                          | There may be more than one blockchain network, and the system is very interoperable       |
-    |                          | across networks. The specific interoperability features are describer in a specific       |
-    |                          | section later in this document.                                                           |
-    +--------------------------+-------------------------------------------------------------------------------------------+
+:Issuer Entity:
+    The juridical person that digitally signs and issues a credential to the User. The Issuer Entity employs or subcontracts the actual people performing the process called Issuer Operator in the diagram. The Issuer Entity assumes full responsibility for the legal implications of the issueance process, especially GDPR compliance. The Issuer Entity acts as a Data Controller with respect to the Personal Information collected from the Citizen when the certification is issued.
+    
+:Issuer Operator:
+    The natural person that is employed/subcontracted by the Issuer Entity to actually drive the process of issuing the credential on behalf of the Issuer Entity.
 
+:Issuer Operator App:
+    This is the application used by the natural person that drives the issuance of the credential. The application allows the operator to enter the details of the user and of the credential and issues the credential to the user on behalf of the Issuer Entity. It is the responsibility of the Issuer Entity to ensure that the Operator performs the process in the right way.
+
+:Citizen:
+    This is the natural person that receives a credential and may present it when needed.
+
+:Citizen  WebApp:
+    This is the application used by the end user to manage the credentials. The reference implementation is not a native application but rather a PWA (Progressive Web App), which can be used either as a normal web app (without installation) or it can be installed and used in a very similar way to a native mobile app. The characteristics of this app are explained later.
+
+:Verifier Entity:
+    A juridical person that verifies the credential. In the process of verification, the Verifier Entity receives personal data from the Citizen. The Verifier Entity is responsible for compliance of all applicable regulations, including GDPR.
+
+:Verifier Operator:
+    A natural person that verifies the credential. It is important to distinguish between natural and juridical persons in the verification process because the flows may be different as the regulatory implications may be different. The diagram does not explicitly mention the Verifier Person, but it will be described in detail later in the document.
+
+:Verifier App:
+    The application used to verify the credential presented by the user. The reference application can be used either by an employee of a Verifier Entity or by an individual natural person, as explained later.
+
+:Blockchain:
+    This should be a Public-Permissioned blockchain network as a general-purpose blockchain network which is used to implement the Trust Framework allowing the efficient and secure verification of credentials. It is never used to store personal information. Personal information management is the responsibility of the legal entities Issuer Entity and Verifier Entity, and they are responsible for compliance to applicable regulations, especially GDPR. There may be more than one blockchain network, and the system is very interoperable across networks. The specific interoperability features are describer in a specific section later in this document.
 
 
 Main credential flow
@@ -274,6 +257,7 @@ Creating identities
 A new identity can only be registered as a sub-node by an existing entity already registered in the system. The API used is ``/api/did/v1/identifiers`` and its definition is the following:
 
 .. http:post:: /api/did/v1/identifiers
+    :noindex:
 
     Create an Identity anchored in the blockchain.
 
@@ -577,6 +561,7 @@ Verification of the credentials
 The system includes two APIs to help client applications with the verification of credentials received from other actors in the ecosystem. The choice of API depends on the trust level of the client application on the server implementing the APIs
 
 .. http:get:: /api/did/v1/identifiers/(string:DID)
+    :noindex:
 
     Resolves a DID and returns the DID Document (JSON format), if it exists.  
     It supports four DID methods: **ebsi**, **elsi**, **ala**, **peer**.
@@ -667,6 +652,7 @@ In general, validating a credential involves the following:
 
 
 .. http:post:: /api/verifiable-credential/v1/verifiable-credential-validations
+    :noindex:
 
     Is the easiest one to use and the one requiring higher level of trust. The client app just passes the JWT in the JWS Compact Serialization format (RFC 7519) as the body of a POST request and the server verifies the credential and credential signature using internally the Universal Resolver API for resolving the DID of the Issuer and checking its digital signature.
 
@@ -675,65 +661,8 @@ In general, validating a credential involves the following:
     :statuscode 200: no error
     :statuscode 404: error resolving the DID
 
-The easiest one to use is :http:post:`/api/verifiable-credential/v1/verifiable-credential-validations` and it is the one requiring higher level of trust. The client app just passes the JWT in the JWS Compact Serialization format (RFC 7519) as the body of a POST request and the server verifies the credential and credential signature using internally the Universal Resolver API for resolving the DID of the Issuer and checking its digital signature.
+The easiest one to use is ``/api/verifiable-credential/v1/verifiable-credential-validations``, and it is the one requiring higher level of trust. The client app just passes the JWT in the JWS Compact Serialization format (RFC 7519) as the body of a POST request and the server verifies the credential and credential signature using internally the Universal Resolver API for resolving the DID of the Issuer and checking its digital signature.
 
-:http:get:`/api/did/v1/identifiers/(string:DID)` is the Universal Resolver API. The client application will have to perform the validations that the server does in the previous call.
+``/api/did/v1/identifiers/(string:DID)`` is the Universal Resolver API. The client application will have to perform the validations that the server does in the previous call.
     
-
-
-PrivacyConsent description
-==========================
-
-Once the PrivacyCred system is operating and the relevant legal entities are registered in the Trust Framework, the management of PrivacyConsent credentials is relatively easy, as it can be implemented using otherwise standard credentials using the underlying PrivateCred system, and benefiting from its specific privacy characteristics.
-
-Credential issuance by first entity
------------------------------------
-
-The flow of issuance of a PrivacyConsent credential is mostly the same as any other credential. However, it includes some special items. The overall flow is:
-
-- The citizen logs into the system of the Issuer Entity. If the entity is a private company, we assume that the citizen is already an existing customer and that the proper KYC processes have benn performed when the customer was onboarded. This process can also be performed over the phone if the business has a proper mechanism of identifying the customer in order to perform legaly binding transactions. If the entity is a public administration, we assume that the entity performs the identification with the nationally acceptable mecanisms, including in-person and remote mechanisms.
-
-- The citizen explicitly accepts to provide consent for a given purpose. The operation should be performed in the same way as if the customer were executing other legaly binding operations in the Issuer Entity system. This is acting effectively as a signature of the fact that the citizen is providing consent for a given purpose.
-
-- The Issuer Entity records the consent for future reference, as it is done currently without verifiable credentials.
-
-- The Issuer Entity generates a Verifiable Credential that includes the explicit consent and purpose, and the citizen Peer DID. The credential is digitally signed by the Issuer Entity with the private key associated to the public key registered in the Trust Framework. Including the Peer DID of the citizen, the credential is binding that Peer DID with the real identity of the citizen (as verified using the KYC data). And this binding is digitally signed by the Issuer Entity in a tamper-resistant way.
-
-- The citizen receives the credential via the QR mechanism (or any other that is supported by the system).
-
-After the interaction, both parties (citizen and Issuer Entity) have a digital representation of the informed consent:
-
-- The Issuer Entity has a consent with a proof of citizen acceptance based on the KYC process that was performed when onboarding the citizen.
-
-- The citizen has a credential digitally signed by the Issuer Entity attesting that the citizen provided consent and that it was accepted by the Issuer Entity.
-
-.. figure:: images/PrivacyConsent_Issuance.png
-    :width: 90%
-
-    Issuance of a PrivacyConsent credential
-
-
-Credential reception by second entity
--------------------------------------
-
-After the previous process, the first entity has already the consent from the citizen. The process to send the consent to the second participating entity is based on the verification flows. The process is the following:
-
-The citizen interacts with the Verifier Entity. This could be done via different channels, like login into the system of the Verifier Entity, or in-person in the premises of the entity. It can also be performed via other electronic channels like email or even messaging systems. Here we describe the process for in-person interaction as when the citizen goes to the social services for the first time and she does not have yet any legally accepted identification mechanism to interact with the public administration. After the first interaction, all other interactions could be performed remotely.
-
-The citizen uses her mobile app to generate a W3C Presentation object, which is essentially a digitally signed object including one or more credentials. The Presentation object is digitally signed with the private key associated to the Peer DID that was used when the process of generating the credential was performed by the first entity.
-
-In this way, the Presentation object includes the following:
-
-- The purpose of the consent.
-
-- The proof that the Issuer Entity is attesting that it received the explicit consent from the customer, after identifying her.
-
-- The signature of the whole thing using a private key associated to the Peer DID that the citizen provided to the Issuer Entity.
-
-.. figure:: images/PrivacyConsent_Presentation.png
-    :width: 90%
-
-    Acceptance of a PrivacyConsent credential by a second entity
-
-
 

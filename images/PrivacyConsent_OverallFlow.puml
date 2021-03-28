@@ -1,17 +1,17 @@
 @startuml PrivacyConsent_OverallFlow
 
-|#aaaaaa|Local Government|
+|#lightblue|Local Government|
 start
 if (color?) is (red) then
 #pink:**action red**;
 :foo1;
 else (not red)
-|#lightgray|Citizen|
+|#orange|Citizen|
 #lightgray:**action not red**;
 :foo2;
 endif
-|Business|
-#lightblue:foo3;
+|#lightgreen|Business|
+:foo3;
 :foo4;
 |Final_Actor|
 #palegreen:foo5;
