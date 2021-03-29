@@ -664,6 +664,5 @@ In general, validating a credential involves the following:
 The easiest one to use is ``/api/verifiable-credential/v1/verifiable-credential-validations``, and it is the one requiring higher level of trust. The client app just passes the JWT in the JWS Compact Serialization format (RFC 7519) as the body of a POST request and the server verifies the credential and credential signature using internally the Universal Resolver API for resolving the DID of the Issuer and checking its digital signature.
 
 ``/api/did/v1/identifiers/(string:DID)`` is the Universal Resolver API. The client application will have to perform the validations that the server does in the previous call.
-    
 
 
