@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>1. PrivacyCred &mdash; PrivacyCred 0.9 documentation</title>
+  <title>2. PrivacyCred &mdash; PrivacyCred 0.9.2 documentation</title>
   
 
   
@@ -40,8 +40,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. PrivacyConsent" href="privacyconsent.html" />
-    <link rel="prev" title="Welcome to PrivacyCred’s documentation!" href="index.html" /> 
+    <link rel="prev" title="1. PrivacyConsent" href="privacyconsent.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -65,7 +64,7 @@
             
             
               <div class="version">
-                0.9
+                0.9.2
               </div>
             
           
@@ -92,45 +91,45 @@
             
               <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">1. PrivacyCred</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#requirements">1.1. Requirements</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#main-design-principles-and-business-requirements">1.1.1. Main design principles and business requirements</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id-binding-and-verification">1.1.2. ID binding and verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="privacyconsent.html">1. PrivacyConsent</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">2. PrivacyCred</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">2.1. Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-design-principles-and-business-requirements">2.1.1. Main design principles and business requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id-binding-and-verification">2.1.2. ID binding and verification</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#privacycred-general-description-of-the-system">1.2. PrivacyCred: General description of the system</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#main-components">1.2.1. Main components</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#main-credential-flow">1.2.2. Main credential flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#privacycred-general-description-of-the-system">2.2. PrivacyCred: General description of the system</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#main-components">2.2.1. Main components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#main-credential-flow">2.2.2. Main credential flow</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#the-trust-framework-bootstrapping-the-system">1.3. The Trust Framework: bootstrapping the system</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#public-permissioned-blockchain-network">1.3.1. Public-Permissioned blockchain network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#information-in-the-blockchain-and-personal-identifiable-information-pii">1.3.2. Information in the blockchain and Personal Identifiable Information (PII)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#trust-framework-trusted-registration-process-of-legal-entities">1.3.3. Trust Framework: trusted registration process of legal entities</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#creating-identities">1.3.3.1. Creating identities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-trust-framework-bootstrapping-the-system">2.3. The Trust Framework: bootstrapping the system</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#public-permissioned-blockchain-network">2.3.1. Public-Permissioned blockchain network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#information-in-the-blockchain-and-personal-identifiable-information-pii">2.3.2. Information in the blockchain and Personal Identifiable Information (PII)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trust-framework-trusted-registration-process-of-legal-entities">2.3.3. Trust Framework: trusted registration process of legal entities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-identities">2.3.3.1. Creating identities</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#credential-flows">1.4. Credential flows</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#credential-issuance">1.4.1. Credential Issuance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#credential-verification">1.4.2. Credential Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#credential-flows">2.4. Credential flows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#credential-issuance">2.4.1. Credential Issuance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credential-verification">2.4.2. Credential Verification</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#elsi-a-did-method-for-legal-entities">1.5. ELSI: a DID Method for legal entities</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#elsi-did-syntax">1.5.1. ELSI DID syntax</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#elsi-did-document">1.5.2. ELSI DID Document</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elsi-a-did-method-for-legal-entities">2.5. ELSI: a DID Method for legal entities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#elsi-did-syntax">2.5.1. ELSI DID syntax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elsi-did-document">2.5.2. ELSI DID Document</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#privacycred-verifiable-credentials">1.6. PrivacyCred Verifiable Credentials</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#data-model">1.6.1. Data Model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#example-of-verifiable-credential">1.6.2. Example of Verifiable Credential</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#privacycred-verifiable-credentials">2.6. PrivacyCred Verifiable Credentials</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-model">2.6.1. Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-of-verifiable-credential">2.6.2. Example of Verifiable Credential</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#verification-of-the-credentials">1.7. Verification of the credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#verification-of-the-credentials">2.7. Verification of the credentials</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="privacyconsent.html">2. PrivacyConsent</a></li>
 </ul>
 
             
@@ -179,7 +178,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li><span class="section-number">1. </span>PrivacyCred</li>
+      <li><span class="section-number">2. </span>PrivacyCred</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -199,9 +198,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="privacycred">
-<h1><span class="section-number">1. </span>PrivacyCred<a class="headerlink" href="#privacycred" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2. </span>PrivacyCred<a class="headerlink" href="#privacycred" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="requirements">
-<h2><span class="section-number">1.1. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1. </span>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
 <p>The journey of a certificate is completed in 3 distinct steps:</p>
 <ol class="arabic simple">
 <li><p>the collection and registration of data about the citizen and her associated characteristics,</p></li>
@@ -216,7 +215,7 @@
 <li><p>The certificate can be linked to the holder of the certificate;</p></li>
 </ul>
 <div class="section" id="main-design-principles-and-business-requirements">
-<h3><span class="section-number">1.1.1. </span>Main design principles and business requirements<a class="headerlink" href="#main-design-principles-and-business-requirements" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.1. </span>Main design principles and business requirements<a class="headerlink" href="#main-design-principles-and-business-requirements" title="Permalink to this headline">¶</a></h3>
 <p>The design of the trust framework for interoperable issuing of certificates and verification of their integrity and authenticity relies on key design principles listed below. The list is not prioritised. Instead, the trust framework that is specified later in the document attempts to optimise as many of the key design principles as possible.</p>
 <dl>
 <dt>Data protection (including data minimisation, purpose limitation, etc.)</dt><dd><p>The trust framework should protect the data of the involved individual stakeholders (most importantly, certificate holders). This covers several data protection dimensions catered by the General Data Protection Regulation, including purpose limitation and data minimisation. In practice, only the bare minimum set of data that is required for the supported use cases should be processed (data minimisation) and the purpose of data collection should be checked against the use cases (purpose limitation).</p>
@@ -253,7 +252,7 @@
 </dl>
 </div>
 <div class="section" id="id-binding-and-verification">
-<h3><span class="section-number">1.1.2. </span>ID binding and verification<a class="headerlink" href="#id-binding-and-verification" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.1.2. </span>ID binding and verification<a class="headerlink" href="#id-binding-and-verification" title="Permalink to this headline">¶</a></h3>
 <p>An important parameter of the trust framework pertains to the identity of the subject of the certificate i.e., the person for whom the certificate is issued. The identity of this subject shall be bound to a certificate when the latter is issued (ID binding) and has to be verified when the certificate is being presented and verified (ID verification). These two processes (ID binding at the Issuance step and ID verification at the Presentation and Verification step) prevent possible impersonation attempts (i.e., a person fraudulently presenting a certificate that has been issued to someone else as if it were their own), and are in line with the data security and privacy by design and default principles of the trust framework.</p>
 <p>The processes of ID binding and/or verification shall rely on (nationally and/or internationally) established methods for ID binding and verification. In other words, the trust framework does not specify in its architecture dedicated components or modalities for undertaking the ID binding and verification process.</p>
 <p>The recommended methods for performing ID binding and verification are based on nationally issued identity proof documents, such as national IDs and passports, and regulated customer onboarding processes (in the case of private companies). The binding is performed at the time of issuance (ID binding) and verification (ID verification) of the certificate and therein personally identifying information held in the syetems of the entities involved should be compared against the information in the certificate.</p>
@@ -266,9 +265,9 @@ suitable nationally issued identity document.</p>
 </div>
 </div>
 <div class="section" id="privacycred-general-description-of-the-system">
-<h2><span class="section-number">1.2. </span>PrivacyCred: General description of the system<a class="headerlink" href="#privacycred-general-description-of-the-system" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2. </span>PrivacyCred: General description of the system<a class="headerlink" href="#privacycred-general-description-of-the-system" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="main-components">
-<h3><span class="section-number">1.2.1. </span>Main components<a class="headerlink" href="#main-components" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.1. </span>Main components<a class="headerlink" href="#main-components" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="id2">
 <a class="reference internal image-reference" href="_images/SafeIsland_Components.png"><img alt="Components of the system" src="_images/SafeIsland_Components.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-text">Components of the system.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
@@ -305,7 +304,7 @@ suitable nationally issued identity document.</p>
 </dl>
 </div>
 <div class="section" id="main-credential-flow">
-<h3><span class="section-number">1.2.2. </span>Main credential flow<a class="headerlink" href="#main-credential-flow" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.2. </span>Main credential flow<a class="headerlink" href="#main-credential-flow" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-default" id="id3">
 <a class="reference internal image-reference" href="_images/RapidTest_Architecture-Operation.png"><img alt="Main credential flow" src="_images/RapidTest_Architecture-Operation.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-text">Main credential flow.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
@@ -340,19 +339,19 @@ suitable nationally issued identity document.</p>
 </div>
 </div>
 <div class="section" id="the-trust-framework-bootstrapping-the-system">
-<h2><span class="section-number">1.3. </span>The Trust Framework: bootstrapping the system<a class="headerlink" href="#the-trust-framework-bootstrapping-the-system" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3. </span>The Trust Framework: bootstrapping the system<a class="headerlink" href="#the-trust-framework-bootstrapping-the-system" title="Permalink to this headline">¶</a></h2>
 <p>Before the issuance of credentials can take place, the system has to be bootstrapped and setup. There are two processes that have to be performed:</p>
 <ol class="arabic simple">
 <li><p>A One-time process at the beginning of the whole system: involves things like deploying Smart Contracts and initializing them with the parameters of the system.</p></li>
 <li><p>A process for the onboarding of each new Issuer Entity and Verifier Entity. This process is basically generating and registering in the blockchain the Identity of the entity entering the system.</p></li>
 </ol>
 <div class="section" id="public-permissioned-blockchain-network">
-<h3><span class="section-number">1.3.1. </span>Public-Permissioned blockchain network<a class="headerlink" href="#public-permissioned-blockchain-network" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.1. </span>Public-Permissioned blockchain network<a class="headerlink" href="#public-permissioned-blockchain-network" title="Permalink to this headline">¶</a></h3>
 <p>The system requires at least one <a class="reference external" href="https://github.com/hesusruiz/PublicPermissionedBlockchain">Public-Permissioned</a> blockchain network. The network should be trusted, efficient, publicly available and compliant with all applicable regulations.</p>
 <p>The system is designed to be easily interoperable with other Public-Permissioned blockchain networks, like LACChain or EBSI. This is described in detail in the appropriate section of this document.</p>
 </div>
 <div class="section" id="information-in-the-blockchain-and-personal-identifiable-information-pii">
-<h3><span class="section-number">1.3.2. </span>Information in the blockchain and Personal Identifiable Information (PII)<a class="headerlink" href="#information-in-the-blockchain-and-personal-identifiable-information-pii" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.2. </span>Information in the blockchain and Personal Identifiable Information (PII)<a class="headerlink" href="#information-in-the-blockchain-and-personal-identifiable-information-pii" title="Permalink to this headline">¶</a></h3>
 <p><strong>No personal information is ever recorded on the blockchain</strong>. The blockchain is only used  to register the identities of the legal persons involved in the system. The information recorded for businesses and organizations includes:</p>
 <ul class="simple">
 <li><p>Public identification information of the legal person in the current regulatory environment, like VAT number, LEI (<a class="reference external" href="https://www.gleif.org">Legal Entity Identifier</a>), or any legally accepted identification in the countries implementing the the system.</p></li>
@@ -370,7 +369,7 @@ suitable nationally issued identity document.</p>
 </div>
 </div>
 <div class="section" id="trust-framework-trusted-registration-process-of-legal-entities">
-<h3><span class="section-number">1.3.3. </span>Trust Framework: trusted registration process of legal entities<a class="headerlink" href="#trust-framework-trusted-registration-process-of-legal-entities" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.3. </span>Trust Framework: trusted registration process of legal entities<a class="headerlink" href="#trust-framework-trusted-registration-process-of-legal-entities" title="Permalink to this headline">¶</a></h3>
 <p>The trust framework is designed to be largely decentralised.</p>
 <p>The identities of the legal persons involved in the ecosystem are registered in a common directory implemented in the blockchain following a hierarchical scheme very similar to the DNS (Domain Name Service) schema in the Internet. Once an entity is registered in the system, it is completely autonomous for adding other entities that are managed as child entities.</p>
 <p>However, there is one centralised element: the root of trust at the top of the hierarchy should be a trusted entity in the ecosystem that is the one bootstraping the system. Typically it should be a regulatory body or a public administration.</p>
@@ -380,7 +379,7 @@ suitable nationally issued identity document.</p>
 <p class="caption"><span class="caption-text">The Trust Framework in the blockchain.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="creating-identities">
-<h4><span class="section-number">1.3.3.1. </span>Creating identities<a class="headerlink" href="#creating-identities" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.3.1. </span>Creating identities<a class="headerlink" href="#creating-identities" title="Permalink to this headline">¶</a></h4>
 <p>A new identity can only be registered as a sub-node by an existing entity already registered in the system. The API used is <code class="docutils literal notranslate"><span class="pre">/api/did/v1/identifiers</span></code> and its definition is the following:</p>
 <dl class="http post">
 <dt>
@@ -449,9 +448,9 @@ suitable nationally issued identity document.</p>
 </div>
 </div>
 <div class="section" id="credential-flows">
-<h2><span class="section-number">1.4. </span>Credential flows<a class="headerlink" href="#credential-flows" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4. </span>Credential flows<a class="headerlink" href="#credential-flows" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="credential-issuance">
-<h3><span class="section-number">1.4.1. </span>Credential Issuance<a class="headerlink" href="#credential-issuance" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.4.1. </span>Credential Issuance<a class="headerlink" href="#credential-issuance" title="Permalink to this headline">¶</a></h3>
 <p>The figure below describes the interaction flows between the Issuer and the Citizen. Here the term Issuer includes the mobile application of the Issuer Operator and the associated backend system of the Issuer Entity.</p>
 <p>The main interaction consists on the transmission of the Verifiable Credential from the Issuer to the mobile of the Citizen. The transmission is initiated with a QR.</p>
 <p>The flows and the APIs used are described in detail below.</p>
@@ -481,7 +480,7 @@ suitable nationally issued identity document.</p>
 </ul>
 </div>
 <div class="section" id="credential-verification">
-<h3><span class="section-number">1.4.2. </span>Credential Verification<a class="headerlink" href="#credential-verification" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.4.2. </span>Credential Verification<a class="headerlink" href="#credential-verification" title="Permalink to this headline">¶</a></h3>
 <p>The system supports the standard online verification process as is common in most implementations of an SSI system. But in addition it supports a special flow for on-person verification of credentials, for example when the credential has to be presented to a Verifier Operator in-person and it has to be verified by the Operator.
 This flow is useful when some process has to be performed in-person in the offices of the Verifier Entity, or even when for some reason it has to be performed out of the offices. In other words, when the citizen is not interacting directly with a web page of the Verifier Entity.</p>
 <p>This is the flow represented in the following diagram.</p>
@@ -492,11 +491,11 @@ This flow is useful when some process has to be performed in-person in the offic
 </div>
 </div>
 <div class="section" id="elsi-a-did-method-for-legal-entities">
-<h2><span class="section-number">1.5. </span>ELSI: a DID Method for legal entities<a class="headerlink" href="#elsi-a-did-method-for-legal-entities" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.5. </span>ELSI: a DID Method for legal entities<a class="headerlink" href="#elsi-a-did-method-for-legal-entities" title="Permalink to this headline">¶</a></h2>
 <p>The system supports several DID Methods using the Universal Resolver to resolve each DID into a corresponding DID Document.
 But the main DID Method used for legal persons, anchored into a Public-Permissioned blockchain, is <em>ELSI</em>: <cite>did:elsi</cite>.</p>
 <div class="section" id="elsi-did-syntax">
-<h3><span class="section-number">1.5.1. </span>ELSI DID syntax<a class="headerlink" href="#elsi-did-syntax" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.5.1. </span>ELSI DID syntax<a class="headerlink" href="#elsi-did-syntax" title="Permalink to this headline">¶</a></h3>
 <p>The name ELSI stands for <strong>E</strong>TSI <strong>L</strong>egal person <strong>S</strong>emantics <strong>I</strong>dentifier, because it is based on the <em>Legal person semantic identifier</em> defined in the <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.04.02_20/en_31941201v010402a.pdf">European Norm ETSI EN 319 412-1</a>, related to digital signatures, peer entity authentication, data authentication as well as data confidentiality.</p>
 <p>The ELSI DID Method refers only to legal persons, so we are using the <em>id-etsi-qcs-SemanticsId-Legal</em> definition described in Section 5.1 of ETSI EN 319 412-1.</p>
 <p>Creating a DID is extremely simple and fully decentralized (does not require participation of any central authority), assuming that the legal person already exists. Its definition using ABNF syntax is:</p>
@@ -541,7 +540,7 @@ But the main DID Method used for legal persons, anchored into a Public-Permissio
 </table>
 </div>
 <div class="section" id="elsi-did-document">
-<h3><span class="section-number">1.5.2. </span>ELSI DID Document<a class="headerlink" href="#elsi-did-document" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.5.2. </span>ELSI DID Document<a class="headerlink" href="#elsi-did-document" title="Permalink to this headline">¶</a></h3>
 <p>An example DID Document is the following:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -594,9 +593,9 @@ But the main DID Method used for legal persons, anchored into a Public-Permissio
 </div>
 </div>
 <div class="section" id="privacycred-verifiable-credentials">
-<h2><span class="section-number">1.6. </span>PrivacyCred Verifiable Credentials<a class="headerlink" href="#privacycred-verifiable-credentials" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.6. </span>PrivacyCred Verifiable Credentials<a class="headerlink" href="#privacycred-verifiable-credentials" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="data-model">
-<h3><span class="section-number">1.6.1. </span>Data Model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.6.1. </span>Data Model<a class="headerlink" href="#data-model" title="Permalink to this headline">¶</a></h3>
 <p>The PrivacyCred credential uses the standard <a class="reference external" href="https://www.w3.org/TR/vc-data-model">W3C Verifiable Credentials Data Model</a> for its representation, with some extensions to fit the requirements of this use case.</p>
 <p>The specific credential data is encoded in the credentialSubject field of the VC. The following two figures represent the complete VC, where it has been divided in two parts to facilitate visualization.</p>
 <div class="figure align-default" id="id8">
@@ -613,7 +612,7 @@ But the main DID Method used for legal persons, anchored into a Public-Permissio
 </ol>
 </div>
 <div class="section" id="example-of-verifiable-credential">
-<h3><span class="section-number">1.6.2. </span>Example of Verifiable Credential<a class="headerlink" href="#example-of-verifiable-credential" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.6.2. </span>Example of Verifiable Credential<a class="headerlink" href="#example-of-verifiable-credential" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;exp&quot;</span><span class="p">:</span> <span class="mi">1614770844</span><span class="p">,</span>
     <span class="nt">&quot;iat&quot;</span><span class="p">:</span> <span class="mi">1614252444</span><span class="p">,</span>
@@ -657,7 +656,7 @@ But the main DID Method used for legal persons, anchored into a Public-Permissio
 </div>
 </div>
 <div class="section" id="verification-of-the-credentials">
-<h2><span class="section-number">1.7. </span>Verification of the credentials<a class="headerlink" href="#verification-of-the-credentials" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.7. </span>Verification of the credentials<a class="headerlink" href="#verification-of-the-credentials" title="Permalink to this headline">¶</a></h2>
 <p>The system includes two APIs to help client applications with the verification of credentials received from other actors in the ecosystem. The choice of API depends on the trust level of the client application on the server implementing the APIs</p>
 <dl class="http get">
 <dt>
@@ -792,8 +791,7 @@ The others are delegated to be resolved by their respective implementations.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="privacyconsent.html" class="btn btn-neutral float-right" title="2. PrivacyConsent" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to PrivacyCred’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="privacyconsent.html" class="btn btn-neutral float-left" title="1. PrivacyConsent" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

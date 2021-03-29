@@ -1,26 +1,26 @@
 \selectlanguage *{english}
-\contentsline {chapter}{\numberline {1}PrivacyCred}{2}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Requirements}{2}{section.1.1}%
-\contentsline {subsection}{\numberline {1.1.1}Main design principles and business requirements}{2}{subsection.1.1.1}%
-\contentsline {subsection}{\numberline {1.1.2}ID binding and verification}{4}{subsection.1.1.2}%
-\contentsline {section}{\numberline {1.2}PrivacyCred: General description of the system}{5}{section.1.2}%
-\contentsline {subsection}{\numberline {1.2.1}Main components}{5}{subsection.1.2.1}%
-\contentsline {subsection}{\numberline {1.2.2}Main credential flow}{6}{subsection.1.2.2}%
-\contentsline {section}{\numberline {1.3}The Trust Framework: bootstrapping the system}{8}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Public\sphinxhyphen {}Permissioned blockchain network}{8}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Information in the blockchain and Personal Identifiable Information (PII)}{8}{subsection.1.3.2}%
-\contentsline {subsection}{\numberline {1.3.3}Trust Framework: trusted registration process of legal entities}{9}{subsection.1.3.3}%
-\contentsline {subsubsection}{Creating identities}{11}{subsubsection*.3}%
-\contentsline {section}{\numberline {1.4}Credential flows}{12}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Credential Issuance}{12}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Credential Verification}{14}{subsection.1.4.2}%
-\contentsline {section}{\numberline {1.5}ELSI: a DID Method for legal entities}{16}{section.1.5}%
-\contentsline {subsection}{\numberline {1.5.1}ELSI DID syntax}{16}{subsection.1.5.1}%
-\contentsline {subsection}{\numberline {1.5.2}ELSI DID Document}{17}{subsection.1.5.2}%
-\contentsline {section}{\numberline {1.6}PrivacyCred Verifiable Credentials}{18}{section.1.6}%
-\contentsline {subsection}{\numberline {1.6.1}Data Model}{18}{subsection.1.6.1}%
-\contentsline {subsection}{\numberline {1.6.2}Example of Verifiable Credential}{18}{subsection.1.6.2}%
-\contentsline {section}{\numberline {1.7}Verification of the credentials}{19}{section.1.7}%
-\contentsline {chapter}{\numberline {2}PrivacyConsent}{23}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Credential issuance by first entity}{23}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Credential reception by second entity}{25}{section.2.2}%
+\contentsline {chapter}{\numberline {1}PrivacyConsent}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Credential issuance by first entity}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Credential reception by second entity}{4}{section.1.2}%
+\contentsline {chapter}{\numberline {2}PrivacyCred}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Requirements}{6}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Main design principles and business requirements}{6}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}ID binding and verification}{8}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}PrivacyCred: General description of the system}{9}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Main components}{9}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Main credential flow}{10}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}The Trust Framework: bootstrapping the system}{12}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Public\sphinxhyphen {}Permissioned blockchain network}{12}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Information in the blockchain and Personal Identifiable Information (PII)}{12}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Trust Framework: trusted registration process of legal entities}{13}{subsection.2.3.3}%
+\contentsline {subsubsection}{Creating identities}{15}{subsubsection*.3}%
+\contentsline {section}{\numberline {2.4}Credential flows}{16}{section.2.4}%
+\contentsline {subsection}{\numberline {2.4.1}Credential Issuance}{16}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Credential Verification}{18}{subsection.2.4.2}%
+\contentsline {section}{\numberline {2.5}ELSI: a DID Method for legal entities}{20}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}ELSI DID syntax}{20}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}ELSI DID Document}{21}{subsection.2.5.2}%
+\contentsline {section}{\numberline {2.6}PrivacyCred Verifiable Credentials}{22}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}Data Model}{22}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Example of Verifiable Credential}{22}{subsection.2.6.2}%
+\contentsline {section}{\numberline {2.7}Verification of the credentials}{23}{section.2.7}%

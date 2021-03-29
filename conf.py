@@ -21,8 +21,8 @@ import sphinx_rtd_theme
 project = 'PrivacyCred'
 copyright = '2021, Jesus Ruiz'
 author = 'Jesus Ruiz'
-release = "0.9"
-version = "0.9"
+release = "0.9.2"
+version = "0.9.2"
 
 
 # -- General configuration ---------------------------------------------------
