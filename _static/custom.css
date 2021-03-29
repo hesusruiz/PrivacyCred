@@ -1,9 +1,10 @@
+/* Test */
 /* Fix fontsize in tables to be 1rem instead of 0.9rem */
 .rst-content table.docutils td>p, .rst-content table.docutils th>p {
     font-size: 1.0rem !important;
 }
 
-/* Fix maimum widh drom 800px */
+/* Fix maximum widh drom 800px */
 .wy-nav-content {
     max-width: 1500px !important;
 }
@@ -21,4 +22,9 @@
 
 .wy-nav-top {
     background-color: #001064;
+}
+
+.preDeactivate {
+    word-wrap: break-word;
+    word-break: break-all;
 }

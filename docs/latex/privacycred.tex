@@ -68,7 +68,7 @@
 
 
 \title{PrivacyCred}
-\date{Mar 28, 2021}
+\date{Mar 29, 2021}
 \release{0.9}
 \author{Jesus Ruiz}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -1172,18 +1172,36 @@ Once the PrivacyCred system is operating and the relevant legal entities are reg
 \label{\detokenize{privacyconsent:credential-issuance-by-first-entity}}
 \sphinxAtStartPar
 The flow of issuance of a PrivacyConsent credential is mostly the same as any other credential. However, it includes some special items. The overall flow is:
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[width=0.700\linewidth]{{PrivacyConsent_OverallFlow_1}.png}
+\caption{Credential issuance by first entity}\label{\detokenize{privacyconsent:id1}}\end{figure}
 \begin{itemize}
 \item {} 
 \sphinxAtStartPar
 The citizen logs into the system of the Issuer Entity. If the entity is a private company, we assume that the citizen is already an existing customer and that the proper KYC processes have benn performed when the customer was onboarded. This process can also be performed over the phone if the business has a proper mechanism of identifying the customer in order to perform legaly binding transactions. If the entity is a public administration, we assume that the entity performs the identification with the nationally acceptable mecanisms, including in\sphinxhyphen{}person and remote mechanisms.
 
-\item {} 
 \sphinxAtStartPar
-The citizen explicitly accepts to provide consent for a given purpose. The operation should be performed in the same way as if the customer were executing other legaly binding operations in the Issuer Entity system. This is acting effectively as a signature of the fact that the citizen is providing consent for a given purpose.
+This standard login process has to be performed at least once to have the legal backing of credentials issued in the following steps. After the credential issuance, the Issuer entity could use (if desired) the credential to perform automatic and remote login of the citizen.
 
 \item {} 
 \sphinxAtStartPar
-The Issuer Entity records the consent for future reference, as it is done currently without verifiable credentials.
+The citizen explicitly accepts to provide consent for a given purpose. The operation should be performed in the same way as if the customer were executing other legaly binding operations in the Issuer Entity system. This is acting effectively as a signature of the fact that the citizen is providing consent for a given purpose, including the consent to generate a digital vertifiable credential to facilitate some process.
+
+\item {} 
+\sphinxAtStartPar
+The Issuer Entity records the consent for future reference or auditing, as it is done currently without verifiable credentials.
+
+\item {} 
+\sphinxAtStartPar
+The Issuer entity then requests from the Citizen a new credential that should include a Peer DID that the Citizen generates with her mobile app. The credential should also be signed with the private key associated to that Peer DID. There may be several mechanisms for requesting and sending credentials. The PrivacyConsent system is based on PrivacyCred so it uses the same set of mechanisms, including QRs.
+
+\item {} 
+\sphinxAtStartPar
+The Issuer entity receives the credential from the Citizen and performs some validations.
 
 \item {} 
 \sphinxAtStartPar
@@ -1208,18 +1226,18 @@ The citizen has a credential digitally signed by the Issuer Entity attesting tha
 
 \end{itemize}
 
-\begin{figure}[htbp]
-\centering
-\capstart
-
-\noindent\sphinxincludegraphics[width=0.900\linewidth]{{PrivacyConsent_Issuance}.png}
-\caption{Issuance of a PrivacyConsent credential}\label{\detokenize{privacyconsent:id1}}\end{figure}
-
 
 \section{Credential reception by second entity}
 \label{\detokenize{privacyconsent:credential-reception-by-second-entity}}
 \sphinxAtStartPar
 After the previous process, the first entity has already the consent from the citizen. The process to send the consent to the second participating entity is based on the verification flows. The process is the following:
+
+\begin{figure}[htbp]
+\centering
+\capstart
+
+\noindent\sphinxincludegraphics[width=0.700\linewidth]{{PrivacyConsent_OverallFlow_2}.png}
+\caption{Credential reception by second entity}\label{\detokenize{privacyconsent:id2}}\end{figure}
 
 \sphinxAtStartPar
 The citizen interacts with the Verifier Entity. This could be done via different channels, like login into the system of the Verifier Entity, or in\sphinxhyphen{}person in the premises of the entity. It can also be performed via other electronic channels like email or even messaging systems. Here we describe the process for in\sphinxhyphen{}person interaction as when the citizen goes to the social services for the first time and she does not have yet any legally accepted identification mechanism to interact with the public administration. After the first interaction, all other interactions could be performed remotely.
@@ -1243,13 +1261,6 @@ The proof that the Issuer Entity is attesting that it received the explicit cons
 The signature of the whole thing using a private key associated to the Peer DID that the citizen provided to the Issuer Entity.
 
 \end{itemize}
-
-\begin{figure}[htbp]
-\centering
-\capstart
-
-\noindent\sphinxincludegraphics[width=0.900\linewidth]{{PrivacyConsent_Presentation}.png}
-\caption{Acceptance of a PrivacyConsent credential by a second entity}\label{\detokenize{privacyconsent:id2}}\end{figure}
 
 
 

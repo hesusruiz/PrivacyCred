@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css\myoverrides.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
 
   
   
@@ -170,10 +170,18 @@
 <div class="section" id="credential-issuance-by-first-entity">
 <h2><span class="section-number">2.1. </span>Credential issuance by first entity<a class="headerlink" href="#credential-issuance-by-first-entity" title="Permalink to this headline">¶</a></h2>
 <p>The flow of issuance of a PrivacyConsent credential is mostly the same as any other credential. However, it includes some special items. The overall flow is:</p>
-<ul class="simple">
-<li><p>The citizen logs into the system of the Issuer Entity. If the entity is a private company, we assume that the citizen is already an existing customer and that the proper KYC processes have benn performed when the customer was onboarded. This process can also be performed over the phone if the business has a proper mechanism of identifying the customer in order to perform legaly binding transactions. If the entity is a public administration, we assume that the entity performs the identification with the nationally acceptable mecanisms, including in-person and remote mechanisms.</p></li>
-<li><p>The citizen explicitly accepts to provide consent for a given purpose. The operation should be performed in the same way as if the customer were executing other legaly binding operations in the Issuer Entity system. This is acting effectively as a signature of the fact that the citizen is providing consent for a given purpose.</p></li>
-<li><p>The Issuer Entity records the consent for future reference, as it is done currently without verifiable credentials.</p></li>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="_images/PrivacyConsent_OverallFlow_1.png"><img alt="_images/PrivacyConsent_OverallFlow_1.png" src="_images/PrivacyConsent_OverallFlow_1.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Credential issuance by first entity</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<ul>
+<li><p>The citizen logs into the system of the Issuer Entity. If the entity is a private company, we assume that the citizen is already an existing customer and that the proper KYC processes have benn performed when the customer was onboarded. This process can also be performed over the phone if the business has a proper mechanism of identifying the customer in order to perform legaly binding transactions. If the entity is a public administration, we assume that the entity performs the identification with the nationally acceptable mecanisms, including in-person and remote mechanisms.</p>
+<p>This standard login process has to be performed at least once to have the legal backing of credentials issued in the following steps. After the credential issuance, the Issuer entity could use (if desired) the credential to perform automatic and remote login of the citizen.</p>
+</li>
+<li><p>The citizen explicitly accepts to provide consent for a given purpose. The operation should be performed in the same way as if the customer were executing other legaly binding operations in the Issuer Entity system. This is acting effectively as a signature of the fact that the citizen is providing consent for a given purpose, including the consent to generate a digital vertifiable credential to facilitate some process.</p></li>
+<li><p>The Issuer Entity records the consent for future reference or auditing, as it is done currently without verifiable credentials.</p></li>
+<li><p>The Issuer entity then requests from the Citizen a new credential that should include a Peer DID that the Citizen generates with her mobile app. The credential should also be signed with the private key associated to that Peer DID. There may be several mechanisms for requesting and sending credentials. The PrivacyConsent system is based on PrivacyCred so it uses the same set of mechanisms, including QRs.</p></li>
+<li><p>The Issuer entity receives the credential from the Citizen and performs some validations.</p></li>
 <li><p>The Issuer Entity generates a Verifiable Credential that includes the explicit consent and purpose, and the citizen Peer DID. The credential is digitally signed by the Issuer Entity with the private key associated to the public key registered in the Trust Framework. Including the Peer DID of the citizen, the credential is binding that Peer DID with the real identity of the citizen (as verified using the KYC data). And this binding is digitally signed by the Issuer Entity in a tamper-resistant way.</p></li>
 <li><p>The citizen receives the credential via the QR mechanism (or any other that is supported by the system).</p></li>
 </ul>
@@ -182,14 +190,14 @@
 <li><p>The Issuer Entity has a consent with a proof of citizen acceptance based on the KYC process that was performed when onboarding the citizen.</p></li>
 <li><p>The citizen has a credential digitally signed by the Issuer Entity attesting that the citizen provided consent and that it was accepted by the Issuer Entity.</p></li>
 </ul>
-<div class="figure align-default" id="id1">
-<a class="reference internal image-reference" href="_images/PrivacyConsent_Issuance.png"><img alt="_images/PrivacyConsent_Issuance.png" src="_images/PrivacyConsent_Issuance.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-text">Issuance of a PrivacyConsent credential</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
 </div>
 <div class="section" id="credential-reception-by-second-entity">
 <h2><span class="section-number">2.2. </span>Credential reception by second entity<a class="headerlink" href="#credential-reception-by-second-entity" title="Permalink to this headline">¶</a></h2>
 <p>After the previous process, the first entity has already the consent from the citizen. The process to send the consent to the second participating entity is based on the verification flows. The process is the following:</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="_images/PrivacyConsent_OverallFlow_2.png"><img alt="_images/PrivacyConsent_OverallFlow_2.png" src="_images/PrivacyConsent_OverallFlow_2.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Credential reception by second entity</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
 <p>The citizen interacts with the Verifier Entity. This could be done via different channels, like login into the system of the Verifier Entity, or in-person in the premises of the entity. It can also be performed via other electronic channels like email or even messaging systems. Here we describe the process for in-person interaction as when the citizen goes to the social services for the first time and she does not have yet any legally accepted identification mechanism to interact with the public administration. After the first interaction, all other interactions could be performed remotely.</p>
 <p>The citizen uses her mobile app to generate a W3C Presentation object, which is essentially a digitally signed object including one or more credentials. The Presentation object is digitally signed with the private key associated to the Peer DID that was used when the process of generating the credential was performed by the first entity.</p>
 <p>In this way, the Presentation object includes the following:</p>
@@ -198,10 +206,6 @@
 <li><p>The proof that the Issuer Entity is attesting that it received the explicit consent from the customer, after identifying her.</p></li>
 <li><p>The signature of the whole thing using a private key associated to the Peer DID that the citizen provided to the Issuer Entity.</p></li>
 </ul>
-<div class="figure align-default" id="id2">
-<a class="reference internal image-reference" href="_images/PrivacyConsent_Presentation.png"><img alt="_images/PrivacyConsent_Presentation.png" src="_images/PrivacyConsent_Presentation.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-text">Acceptance of a PrivacyConsent credential by a second entity</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
-</div>
 </div>
 </div>
 

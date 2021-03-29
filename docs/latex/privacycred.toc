@@ -23,4 +23,4 @@
 \contentsline {section}{\numberline {1.7}Verification of the credentials}{19}{section.1.7}%
 \contentsline {chapter}{\numberline {2}PrivacyConsent}{23}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Credential issuance by first entity}{23}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Credential reception by second entity}{24}{section.2.2}%
+\contentsline {section}{\numberline {2.2}Credential reception by second entity}{25}{section.2.2}%
