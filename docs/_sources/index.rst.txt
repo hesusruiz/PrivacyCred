@@ -16,7 +16,7 @@ fully suitable as they are normally designed currently.
 
 **PrivacyConsent**
 
-The first part describes the :doc:`PrivacyConsent <privacyconsent>` flows on top of
+The first part describes the :doc:`PrivacyConsent <ssi/privacyconsent>` flows on top of
 PrivacyCred for very strict use cases, like managing the informed consent of a user in the
 collective of people at risk of exclusion, when two or more entities are involved in the
 secure and legal exchange of sensitive personal data, to collaborate to provide a better
@@ -24,7 +24,7 @@ service to the citizen.
 
 **PrivacyCred**
 
-The secod part describes the :doc:`PrivacyCred <privacycred>` system, including the data
+The secod part describes the :doc:`PrivacyCred <ssi/privacycred>` system, including the data
 model, interfaces and main interactions. Understanding the caharacteristics of the
 underlying system is important to understand how PrivacyConsent works.
 
@@ -36,7 +36,8 @@ underlying system is important to understand how PrivacyConsent works.
    :maxdepth: 2
    :caption: Contents
 
-   privacyconsent
-   privacycred
+   ssi/privacyconsent
+   ssi/privacycred
+   
 
 

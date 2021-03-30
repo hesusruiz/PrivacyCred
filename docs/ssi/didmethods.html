@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>DID Methods &mdash; PrivacyCred 0.9.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #001064" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PrivacyCred
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="privacyconsent.html">1. PrivacyConsent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="privacycred.html">2. PrivacyCred</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PrivacyCred</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>DID Methods</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/ssi/didmethods.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="did-methods">
+<h1>DID Methods<a class="headerlink" href="#did-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="elsi-a-did-method-for-legal-entities">
+<h2>ELSI: a DID Method for legal entities<a class="headerlink" href="#elsi-a-did-method-for-legal-entities" title="Permalink to this headline">¶</a></h2>
+<p>The system supports several DID Methods using the Universal Resolver to resolve each DID into a corresponding DID Document.
+But the main DID Method used for legal persons, anchored into a Public-Permissioned blockchain, is <em>ELSI</em>: <cite>did:elsi</cite>.</p>
+<div class="section" id="elsi-did-syntax">
+<h3>ELSI DID syntax<a class="headerlink" href="#elsi-did-syntax" title="Permalink to this headline">¶</a></h3>
+<p>The name ELSI stands for <strong>E</strong>TSI <strong>L</strong>egal person <strong>S</strong>emantics <strong>I</strong>dentifier, because it is based on the <em>Legal person semantic identifier</em> defined in the <a class="reference external" href="https://www.etsi.org/deliver/etsi_en/319400_319499/31941201/01.04.02_20/en_31941201v010402a.pdf">European Norm ETSI EN 319 412-1</a>, related to digital signatures, peer entity authentication, data authentication as well as data confidentiality.</p>
+<p>The ELSI DID Method refers only to legal persons, so we are using the <em>id-etsi-qcs-SemanticsId-Legal</em> definition described in Section 5.1 of ETSI EN 319 412-1.</p>
+<p>Creating a DID is extremely simple and fully decentralized (does not require participation of any central authority), assuming that the legal person already exists. Its definition using ABNF syntax is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">did</span> <span class="o">=</span> <span class="s2">&quot;did:elsi:&quot;</span> <span class="nb">id</span><span class="o">-</span><span class="n">etsi</span><span class="o">-</span><span class="n">qcs</span><span class="o">-</span><span class="n">SemanticsId</span><span class="o">-</span><span class="n">Legal</span>
+</pre></div>
+</div>
+<p>Which is the concatenation of the prefix <cite>did:elsi:</cite> with the legal person identifier defined in ETSI EN 319 412-1. For the full syntax, please refer to the standards document, but for the two most common basic identifiers (VAT and LEI) the identifier is composed of:</p>
+<ul class="simple">
+<li><p>3 character legal person identity type reference, like <cite>VAT</cite> for identification based on a national value added tax identification number or <cite>LEI</cite> for the <a class="reference external" href="https://www.gleif.org">Legal Entity Identifier</a>.</p></li>
+<li><p>2 character ISO 3166 [2] country code;</p></li>
+<li><p>hyphen-minus “-” (0x2D (ASCII), U+002D (UTF-8)); and</p></li>
+<li><p>identifier (according to country and identity type reference).</p></li>
+</ul>
+<p>Some examples of DIDs are the following:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>DID</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ENDESA ENERGÍA (www.endesa.com)</p></td>
+<td><p><strong>did:elsi:VATES-A81948077</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>IN2 (www.ins.es)</p></td>
+<td><p><strong>did:elsi:VATES-B60645900</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>AENA (www.aena.es)</p></td>
+<td><p><strong>did:elsi:VATES-A86212420</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Inter-American Development Bank (www.iadb.org)</p></td>
+<td><p><strong>did:elsi:LEIXG-VKU1UKDS9E7LYLMACP54</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>DAA plc (Dublin Airport Authority) (www.daa.ie)</p></td>
+<td><p><strong>did:elsi:LEIXG-635400HRFGVKXFHZ8O77</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="elsi-did-document">
+<h3>ELSI DID Document<a class="headerlink" href="#elsi-did-document" title="Permalink to this headline">¶</a></h3>
+<p>An example DID Document is the following:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;payload&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;@context&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;https://www.w3.org/ns/did/v1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;https://w3id.org/security/v1&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;did:elsi:VATES-B60645900&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;verificationMethod&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;did:elsi:VATES-B60645900#key-verification&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;JwsVerificationKey2020&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;controller&quot;</span><span class="p">:</span> <span class="s2">&quot;did:elsi:VATES-B60645900&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;publicKeyJwk&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;kid&quot;</span><span class="p">:</span> <span class="s2">&quot;key-verification&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;kty&quot;</span><span class="p">:</span> <span class="s2">&quot;EC&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;crv&quot;</span><span class="p">:</span> <span class="s2">&quot;secp256k1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;x&quot;</span><span class="p">:</span> <span class="s2">&quot;3K4iNuzPkcrHlEbhHE8vYXlF6K5xGZ2rdOrn3cQ-LnQ&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;y&quot;</span><span class="p">:</span> <span class="s2">&quot;9Z_l_hQLkq6aLuZz8gheq7R_o5ZUHUlxZ3IBGHsdzaA&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;service&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;did:elsi:VATES-B60645900#info&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;EntityCommercialInfo&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;serviceEndpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;www.in2.es&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;IN2 Innovating 2gether&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;did:elsi:VATES-B60645900#sms&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;SecureMessagingService&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;serviceEndpoint&quot;</span><span class="p">:</span> <span class="s2">&quot;https://privatecred.hesusruiz.org/api&quot;</span>
+    <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;anchors&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;redt.alastria&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;resolution&quot;</span><span class="p">:</span> <span class="s2">&quot;UniversalResolver&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;domain&quot;</span><span class="p">:</span> <span class="s2">&quot;in2.ala&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;ethereumAddress&quot;</span><span class="p">:</span> <span class="s2">&quot;0x8CDA8113567e633805e48c87747257E9FFAAdDF5&quot;</span>
+    <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;created&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-08T06:53:08Z&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;updated&quot;</span><span class="p">:</span> <span class="s2">&quot;2021-02-08T06:53:08Z&quot;</span>
+<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Jesus Ruiz.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

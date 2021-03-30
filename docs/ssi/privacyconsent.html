@@ -1,0 +1,437 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. PrivacyConsent &mdash; PrivacyCred 0.9.3 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. PrivacyCred" href="privacycred.html" />
+    <link rel="prev" title="Welcome to PrivacyCred’s documentation!" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #001064" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> PrivacyCred
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.9.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. PrivacyConsent</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#credential-issuance-by-first-entity">1.1. Credential issuance by first entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#credential-reception-by-second-entity">1.2. Credential reception by second entity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#w3c-verifiable-credential-for-consent-receipt">1.3. W3C Verifiable Credential for Consent Receipt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fields-about-consent">1.3.1. Fields about Consent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fields-about-data-controller">1.3.2. Fields about Data Controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fields-about-purposes-processing-and-personal-data">1.3.3. Fields about Purposes, Processing, and Personal Data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="privacycred.html">2. PrivacyCred</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PrivacyCred</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>PrivacyConsent</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/ssi/privacyconsent.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="privacyconsent">
+<h1><span class="section-number">1. </span>PrivacyConsent<a class="headerlink" href="#privacyconsent" title="Permalink to this headline">¶</a></h1>
+<p>Once the PrivacyCred system is operating and the relevant legal entities are registered in the Trust Framework, the management of PrivacyConsent credentials is relatively easy, as it can be implemented using otherwise standard credentials using the underlying PrivateCred system, and benefiting from its specific privacy characteristics.</p>
+<div class="section" id="credential-issuance-by-first-entity">
+<h2><span class="section-number">1.1. </span>Credential issuance by first entity<a class="headerlink" href="#credential-issuance-by-first-entity" title="Permalink to this headline">¶</a></h2>
+<p>The flow of issuance of a PrivacyConsent credential is mostly the same as any other credential. However, it includes some special items. The overall flow is:</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/PrivacyConsent_OverallFlow_1.png"><img alt="../_images/PrivacyConsent_OverallFlow_1.png" src="../_images/PrivacyConsent_OverallFlow_1.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Credential issuance by first entity</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<ul>
+<li><p>The citizen logs into the system of the Issuer Entity. If the entity is a private company, we assume that the citizen is already an existing customer and that the proper KYC processes have benn performed when the customer was onboarded. This process can also be performed over the phone if the business has a proper mechanism of identifying the customer in order to perform legaly binding transactions. If the entity is a public administration, we assume that the entity performs the identification with the nationally acceptable mecanisms, including in-person and remote mechanisms.</p>
+<p>This standard login process has to be performed at least once to have the legal backing of credentials issued in the following steps. After the credential issuance, the Issuer entity could use (if desired) the credential to perform automatic and remote login of the citizen.</p>
+</li>
+<li><p>The citizen explicitly accepts to provide consent for a given purpose. The operation should be performed in the same way as if the customer were executing other legaly binding operations in the Issuer Entity system. This is acting effectively as a signature of the fact that the citizen is providing consent for a given purpose, including the consent to generate a digital vertifiable credential to facilitate some process.</p></li>
+<li><p>The Issuer Entity records the consent for future reference or auditing, as it is done currently without verifiable credentials.</p></li>
+<li><p>The Issuer entity then requests from the Citizen a new credential that should include a Peer DID that the Citizen generates with her mobile app. The credential should also be signed with the private key associated to that Peer DID. There may be several mechanisms for requesting and sending credentials. The PrivacyConsent system is based on PrivacyCred so it uses the same set of mechanisms, including QRs.</p></li>
+<li><p>The Issuer entity receives the credential from the Citizen and performs some validations.</p></li>
+<li><p>The Issuer Entity generates a Verifiable Credential that includes the explicit consent and purpose, and the citizen Peer DID. The credential is digitally signed by the Issuer Entity with the private key associated to the public key registered in the Trust Framework. Including the Peer DID of the citizen, the credential is binding that Peer DID with the real identity of the citizen (as verified using the KYC data). And this binding is digitally signed by the Issuer Entity in a tamper-resistant way.</p></li>
+<li><p>The citizen receives the credential via the QR mechanism (or any other that is supported by the system).</p></li>
+</ul>
+<p>After the interaction, both parties (citizen and Issuer Entity) have a digital representation of the informed consent:</p>
+<ul class="simple">
+<li><p>The Issuer Entity has a consent with a proof of citizen acceptance based on the KYC process that was performed when onboarding the citizen.</p></li>
+<li><p>The citizen has a credential digitally signed by the Issuer Entity attesting that the citizen provided consent and that it was accepted by the Issuer Entity.</p></li>
+</ul>
+</div>
+<div class="section" id="credential-reception-by-second-entity">
+<h2><span class="section-number">1.2. </span>Credential reception by second entity<a class="headerlink" href="#credential-reception-by-second-entity" title="Permalink to this headline">¶</a></h2>
+<p>After the previous process, the first entity has already the consent from the citizen. The process to send the consent to the second participating entity is based on the verification flows. The process is the following:</p>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/PrivacyConsent_OverallFlow_2.png"><img alt="../_images/PrivacyConsent_OverallFlow_2.png" src="../_images/PrivacyConsent_OverallFlow_2.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Credential reception by second entity</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<p>The citizen interacts with the Verifier Entity. This could be done via different channels, like login into the system of the Verifier Entity, or in-person in the premises of the entity. It can also be performed via other electronic channels like email or even messaging systems. Here we describe the process for in-person interaction as when the citizen goes to the social services for the first time and she does not have yet any legally accepted identification mechanism to interact with the public administration. After the first interaction, all other interactions could be performed remotely.</p>
+<p>The citizen uses her mobile app to generate a W3C Presentation object, which is essentially a digitally signed object including one or more credentials. The Presentation object is digitally signed with the private key associated to the Peer DID that was used when the process of generating the credential was performed by the first entity.</p>
+<p>In this way, the Presentation object includes the following:</p>
+<ul class="simple">
+<li><p>The purpose of the consent.</p></li>
+<li><p>The proof that the Issuer Entity is attesting that it received the explicit consent from the customer, after identifying her.</p></li>
+<li><p>The signature of the whole thing using a private key associated to the Peer DID that the citizen provided to the Issuer Entity.</p></li>
+</ul>
+</div>
+<div class="section" id="w3c-verifiable-credential-for-consent-receipt">
+<h2><span class="section-number">1.3. </span>W3C Verifiable Credential for Consent Receipt<a class="headerlink" href="#w3c-verifiable-credential-for-consent-receipt" title="Permalink to this headline">¶</a></h2>
+<p>The data model is based on the work being currently performed to elaborate the future ISO/IEC 27560 (it is still elaborating the first draft). But the work is not new: there have been in the past several efforts to standardise the data involved in a consent transaction, most notably the one by the <a class="reference external" href="https://kantarainitiative.org/groups/advanced-notice-consent-receipt-work-group/">Advanced Notice &amp; Consent Receipt Work Group</a> from the <a class="reference external" href="https://kantarainitiative.org/">Kantara Initiative</a>. Their work was an important input for the current ISO/IEC 29184:2020 <em>Information technology — Online privacy notices and consent</em>.</p>
+<p>The current standards were developed before the European GDPR was enforced, and the proposal in this document is based on several efforts to adapt the current specs to the GDPR.</p>
+<p>In addition, this document proposes an adaptation of those models to the new world of SSI, by mapping and extending slightly the existing data models to fit the W3C Verifiable Credential Data Model.</p>
+<p>The focus in this document is not in the detailed consent records that Data Controllers or Data Processors have to keep in their systems (e.g, for auditing purposes by a regulator). Instead, the focus is on the Consent Receipts that the Citizen should receive from the entities managing her data. In some sense, such Consent Receipts are a subset of the full Consent Records that are stored in the processing systems of the entities.</p>
+<p>An example of a Consent Receipt in JSON format is the following.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;2.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;jurisdictions&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;EEA&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;receiptID&quot;</span><span class="p">:</span> <span class="s2">&quot;c0fbfbd3-f380-4cb4-a4f9-328621c3824d&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;receiptTimestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;1551959162&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;consentTimestamp&quot;</span><span class="p">:</span> <span class="s2">&quot;1551959162&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;collectionMethod&quot;</span><span class="p">:</span> <span class="s2">&quot;W3CVC&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;dataSubjectID&quot;</span><span class="p">:</span> <span class="s2">&quot;did:peer:0z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;consentType&quot;</span><span class="p">:</span> <span class="s2">&quot;EXPLICIT&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;withdrawConsent&quot;</span><span class="p">:</span> <span class="s2">&quot;https://trub.com/consent/v2.3/withdraw&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;rights&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;https://trub.com/consent/v2.3/rights&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;isChild&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;validity&quot;</span><span class="p">:</span> <span class="s2">&quot;90 days&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;consentID&quot;</span><span class="p">:</span> <span class="s2">&quot;9adf514a-3a77-415c-86a0-569c075ee547&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;verificationKey&quot;</span><span class="p">:</span> <span class="s2">&quot;66D6EBEEF47B5D6D421417874BDC9A5F9A8FD2D1C881FAAB7EF21EC02FB40D67&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;collectedBy&quot;</span><span class="p">:</span> <span class="s2">&quot;The Trusted Business Inc.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;controllers&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;controllerDID&quot;</span><span class="p">:</span> <span class="s2">&quot;did:elsi:VATES-A81948077&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;controllerName&quot;</span><span class="p">:</span> <span class="s2">&quot;The Trusted Business Inc.&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;controllerWebsite&quot;</span><span class="p">:</span> <span class="s2">&quot;https://trub.com/&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;controllerContact&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;trub@example.com (email)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;+0-000-0000 (phone)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;@trub (twitter)&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;controllerDPO&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;trub-DPO@example.com (email)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;+0-000-0001 (phone)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;@trubdpo (twitter)&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;policies&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;https://trub.com/privacy-policy&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;https://trub.com/t&amp;C&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;purposes&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;purpose&quot;</span><span class="p">:</span> <span class="s2">&quot;Send unpaid bills data to your Social Services&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;personalData&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;address&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;paymentDetails&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;sensitivePersonalData&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="nt">&quot;processing&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;send&quot;</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;dataStorage&quot;</span><span class="p">:</span> <span class="s2">&quot;6 months&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;thirdParties&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="nt">&quot;thirdPartyID&quot;</span><span class="p">:</span> <span class="s2">&quot;did:elsi:VATES-P2906700F&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;thirdPartyName&quot;</span><span class="p">:</span> <span class="s2">&quot;Ayuntamiento de Malaga, Servicios Sociales&quot;</span><span class="p">,</span>
+                    <span class="nt">&quot;thirdPartyRole&quot;</span><span class="p">:</span> <span class="s2">&quot;SocialServicesProvider&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
+            <span class="nt">&quot;internationalTransfer&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;profiling&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;automatedDecisionMaking&quot;</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The individual data fields are described below.</p>
+<div class="section" id="fields-about-consent">
+<h3><span class="section-number">1.3.1. </span>Fields about Consent<a class="headerlink" href="#fields-about-consent" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt>Version</dt><dd><p>The version of the specification to which a receipt conforms.
+The value MUST be “2.0” for this version of the specification.</p>
+</dd>
+<dt>Jurisdictions</dt><dd><p>Jurisdiction(s) applicable to this transaction. This field MUST contain a non-empty list of strings describing the jurisdiction(s). Each string in the list MUST describe a country (using ISO 3166) or a legislative region (such as EU).</p>
+</dd>
+<dt>Receipt ID</dt><dd><p>A unique number for each Consent Receipt. SHOULD use UUID-4 [RFC 4122]. This field MUST contain a non-empty string.</p>
+</dd>
+<dt>Receipt Timestamp</dt><dd><p>Date and time of the receipt. The JSON value MUST be expressed as the number of seconds since 1970-01-01 00:00:00 GMT. ISO 8601 Date and Time Format [ISO 8601] MUST be used for formatting</p>
+<p>This field specifies the timestamp at which the receipt was generated/provided to the data subject. This timestamp can be separate from the timestamp of the given consent.</p>
+</dd>
+<dt>Consent Timestamp</dt><dd><p>Date and time of when consent was given by the data subject. The JSON value MUST be expressed as the number of seconds since 1970-01-01 00:00:00 GMT. ISO 8601 Date and Time Format [ISO 8601] MUST be used for formatting.</p>
+</dd>
+<dt>Collection Method</dt><dd><p>A description of the method by which consent was obtained.</p>
+</dd>
+<dt>Language</dt><dd><p>Language used to obtain consent. MUST use ISO 639-1:2002 [ISO 639] if this field is used.</p>
+</dd>
+<dt>Data Subject ID</dt><dd><p>Identifier used to denote the Data Subject’s identity for consent. It has to be the Peer DID that the data subject self-generated.</p>
+</dd>
+<dt>Consent Type</dt><dd><p>Type denotes nature of given consent in its relation to the data subject. In this extension the default value is “EXPLICIT”</p>
+</dd>
+<dt>Withdraw Consent</dt><dd><p>Information about withdrawing consent according to rights provided by the GDPR.</p>
+</dd>
+<dt>Consent ID</dt><dd><p>This field is used to specify the internal consent ID used by the Controller to refer to consent. Controllers may wish to provide this for convenience in their communication with the data subject for referring to this specific consent.</p>
+</dd>
+<dt>Validity</dt><dd><p>Validity or duration of consent after which the consent can no longer be used as a legal basis.
+The validity can be a specific date-time, or a duration (e.g. 6 months), or based on an event or condition (e.g., “as long as account is valid”).</p>
+</dd>
+<dt>Rights</dt><dd><p>Rights include Right to Rectify, Right to Data Portability. The Right to Withdraw is specified in the “withdrawConsent” field.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="fields-about-data-controller">
+<h3><span class="section-number">1.3.2. </span>Fields about Data Controller<a class="headerlink" href="#fields-about-data-controller" title="Permalink to this headline">¶</a></h3>
+<dl class="simple">
+<dt>Verification Key</dt><dd><p>Cryptographic key used to verify the receipt’s integrity, normally the Controller’s Public Key.</p>
+</dd>
+<dt>Collected By</dt><dd><p>Consent can be collected by another entity on behalf of the Controller, which can be specified by this field. The field is optional, and its absence indicates the consent was collected by the same Controller as defined in the receipt.</p>
+</dd>
+<dt>Controllers</dt><dd><p>Identities of the Controllers to whom the consent is applicable. Each item in the list of Controllers must specify the identity, website, contact, DPO, and policies for that Controller.</p>
+</dd>
+<dt>Controller Website</dt><dd><p>The website of the Controller.</p>
+</dd>
+<dt>Controller Contact</dt><dd><p>Contact details of the Controller. There can be multiple contacts such as phone number, email, twitter handle. Each contact must be accompanied with a description of its type e.g. &#64;acmeinc (twitter)</p>
+</dd>
+<dt>Policies</dt><dd><p>Links to the Data Controller’s policies such as privacy statement/policy and applicable terms of use in effect when the consent was obtained, and the receipt was issued. If a policy changes, the link SHOULD continue to point to the old policy until there is evidence of an updated consent from the Data Subject.</p>
+</dd>
+<dt>Controller ID</dt><dd><p>The identity of the Controller, represented as an ELSI DID.</p>
+</dd>
+<dt>Controller Name</dt><dd><p>The legal name of the organisation.</p>
+</dd>
+<dt>Controller DPO Contact</dt><dd><p>This field is used to specify the contact details of the Controller’s DPO
+There can be multiple contacts such as phone number, email, twitter handle. Each contact must be accompanied with a description of its type e.g. &#64;acmeinc (twitter)</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="fields-about-purposes-processing-and-personal-data">
+<h3><span class="section-number">1.3.3. </span>Fields about Purposes, Processing, and Personal Data<a class="headerlink" href="#fields-about-purposes-processing-and-personal-data" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt>Purposes</dt><dd><p>The receipt can contain one or more purposes that provide explanation for the processing of personal data.</p>
+</dd>
+<dt>Purpose</dt><dd><p>A short, clear explanation of why the personal data is required to be processed. Each purpose should specify the personal data, sensitive personal data, processing categories, data storage, involved third parties, international transfers, profiling, and automated decision making.</p>
+</dd>
+<dt>Personal Data</dt><dd><p>A list of Personal Data Categories required for use in the specified Purpose. Each category should be well defined and published - such as in code of practice. Each Purpose can have one or more categories of personal data associated with it. Categories that are sensitive should be listed in the Sensitive Personal Data field.</p>
+</dd>
+<dt>Sensitive Personal Data</dt><dd><p>A list of Sensitive Personal Data Categories required for use in the specified Purpose. Each category should be well defined and published - such as in code of practice. Categories that are not sensitive should be listed in the Personal Data field.</p>
+</dd>
+<dt>Third Parties</dt><dd><p>Indicates if the Data Controller is disclosing Personal Data to a third party for the specified purpose. Each listed third party or third-party category in the list must have a role associated with it e.g. Processor, Law Agency.</p>
+</dd>
+<dt>Third Party ID</dt><dd><p>The ELSI DID of the Third Party.</p>
+</dd>
+<dt>Third Party Name</dt><dd><p>The name the Third Party the Controller will disclose the Personal Data to. Must be accompanied by the role e.g. Processor.</p>
+</dd>
+<dt>Third Party Role</dt><dd><p>Describes the role of the third party to whom data is disclosed for the specified purpose e.g. Processor or Partner</p>
+</dd>
+<dt>Profiling</dt><dd><p>This field is used to indicate if the specified purpose involves profiling.</p>
+<p>In GDPR, ‘profiling’ means any form of automated processing of personal data consisting of the use of personal data to evaluate certain personal aspects relating to a natural person, in particular to analyse or predict aspects concerning that natural person’s performance at work, economic situation, health, personal preferences, interests, reliability, behaviour, location or movements;</p>
+</dd>
+<dt>Automated decision making</dt><dd><p>This field is used to indicate if the specified purpose is solely based on automated measures that produce legal effects for the data subject.</p>
+<p>This is mentioned in GDPR as decision based solely on automated processing, including profiling, which produces legal effects for the data subjects or similarly significantly affects him or her.</p>
+</dd>
+<dt>Processing Categories</dt><dd><p>This field is used to list the processing categories associated with a purpose.</p>
+<p>Describes the data processing actions/activities carried out over personal data for the specified purpose. E.g. collect, use, store, share.</p>
+</dd>
+<dt>Data Storage</dt><dd><p>This field is used to specify the data storage duration or conditions associated with the purpose.</p>
+<p>The data storage field can specify the date/time or duration, or a condition or event (e.g. as long as account is active) after which the data will be erased and will no longer be used for the specified purpose</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="privacycred.html" class="btn btn-neutral float-right" title="2. PrivacyCred" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to PrivacyCred’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Jesus Ruiz.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

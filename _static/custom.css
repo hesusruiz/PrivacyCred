@@ -1,4 +1,14 @@
 /* Test */
+
+html {
+    font-size: 1rem;
+}
+
+body, p {
+    font-size: 1rem;
+}
+
+
 /* Fix fontsize in tables to be 1rem instead of 0.9rem */
 .rst-content table.docutils td>p, .rst-content table.docutils th>p {
     font-size: 1.0rem !important;
