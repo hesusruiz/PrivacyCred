@@ -2,12 +2,34 @@
 DID Methods
 ===========
 
-Personal 
+For generating credentials PrivacyCred uses two DID Methods (Peer DID and ELSI), but can interoperate with credentials generated with other DID Methods like EBSI, AlastriaID and Ethr.
 
-PrivacyCred is designed for managing very sensitive personal data. This is the reason why we use two different DID Methods, one 
+Personally Identifiable Information (PII) is essentially very different from the public information from businesses and organisations. Those differences are even stressed in different regulations. The GDPR applies strict rules for processing PII.
 
-ELSI: a DID Method for legal entities
--------------------------------------
+This is the reason why PrivacyCred uses two different DID Methods, one for identities of organisations and another one for citizens.
+
+For citizens we use Peer DIDs, with no requirement to register anything related to the citizen in any global repository or blockchain. Peer DIDs are perfect for maximising privacy in bilateral relationships where the actual DID and related data is only known to the parties involved in a relationship (the citizen and the organisation). Beyond bilateral relationships, Peer DIDs can also be very good when those relationships involve a reduced number of participants that agree to collaborate on some specific use case for a very well defined purpose and for the benefit of the citizen.
+
+For organisations PrivacyCred uses ELSI, a DID method based in current standards which is extremely easy to implement and use, and is alligned completely with uses cases in the real economy, where the identities of organisations is public.
+
+PrivacyCred is designed for managing very sensitive personal data, and this is the reason why we use two different DID Methods, one for identities of organisations and another one for citizens. This separation has many advantages, allowing a strict separation of the mechanisms that are used for managing those two very different sets of data.
+
+For Citizens: Peer DID Method
+-----------------------------
+
+Advantages of Peer DIDs:
+
+- They have no transaction costs, making them essentially free to create, store, and maintain.
+- They scale and perform entirely as a function of participants, not with any central system's capacity.
+- Because they are not persisted in any central system, there is no trove to protect.
+- Because only the parties to a given relationship know them, concerns about personal data and privacy regulations due to third-party data controllers or processors are much reduced.
+- Because they are not beholden to any particular blockchain, they have minimal political or technical baggage.
+- They can be mapped into the namespaces of other DID ecosystems, allowing a peer DID to have predictable meaning in 1 or more other blockchains (see Grafting). This creates an interoperability bridge and solves a problem with blockchain forks fighting over the ownership of a DID.
+- Because they avoid a dependence on a central source of truth, peer DIDs free themselves of the often-online requirement that typifies most other DID methods, and are thus well suited to use cases that need a decentralized peer-oriented architecture. Peer DIDs can be created and maintained for an entire lifecycle without any reliance on the internet, with no degradation of trust. They thus align closely with the ethos and the architectural mindset of the local-first and offline-first software movements.
+
+
+For Organisations: ELSI DID Method
+----------------------------------
 
 The system supports several DID Methods using the Universal Resolver to resolve each DID into a corresponding DID Document.
 But the main DID Method used for legal persons, anchored into a Public-Permissioned blockchain, is *ELSI*: `did:elsi`.
