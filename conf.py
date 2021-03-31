@@ -14,8 +14,6 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-import sphinx_rtd_theme
-
 # -- Project information -----------------------------------------------------
 
 project = 'PrivacyCred'
@@ -31,12 +29,15 @@ version = "0.9.3"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    "sphinxcontrib.bibtex",
     "sphinx_rtd_theme",
     "sphinxcontrib.httpdomain",
-    "sphinx.ext.githubpages",
     "sphinx.ext.graphviz",
     "sphinxcontrib.actdiag"
 ]
+
+bibtex_bibfiles = ['refs.bib']
+bibtex_reference_style = "label"
 
 rinoh_documents = [dict(doc='index',
                     target='manual',
@@ -58,17 +59,6 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 #
 html_theme = 'sphinx_rtd_theme'
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
-
-# These paths are either relative to html_static_path
-# or fully qualified paths (eg. https://...) 
-html_css_files = [
-    'custom.css',
-]
-
 html_theme_options = {
 #    'analytics_id': 'UA-XXXXXXX-1',  #  Provided by Google in your dashboard
 #    'analytics_anonymize_ip': False,
@@ -85,6 +75,17 @@ html_theme_options = {
     'includehidden': True,
     'titles_only': False
 }
+
+# Add any paths that contain custom static files (such as style sheets) here,
+# relative to this directory. They are copied after the builtin static files,
+# so a file named "default.css" will overwrite the builtin "default.css".
+html_static_path = ['_static']
+
+# These paths are either relative to html_static_path
+# or fully qualified paths (eg. https://...) 
+html_css_files = [
+    'custom.css',
+]
 
 
 latex_engine = 'xelatex'

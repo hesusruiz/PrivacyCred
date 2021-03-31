@@ -2,6 +2,10 @@
 DID Methods
 ===========
 
+Personal 
+
+PrivacyCred is designed for managing very sensitive personal data. This is the reason why we use two different DID Methods, one 
+
 ELSI: a DID Method for legal entities
 -------------------------------------
 

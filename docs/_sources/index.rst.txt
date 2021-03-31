@@ -1,33 +1,62 @@
 
-Welcome to PrivacyCred's documentation!
-=======================================
+Welcome to PrivacyConsent's documentation!
+==========================================
 
-PrivacyConsent is a system that allows a citizen to manage informed consent to two
-independent entities to exchange personal data among them for a very specific purpose.
-PrivacyConsent is based on PrivacyCred, a generic credential system which is designed to
-be secure, privacy-preserving, scalable, performant and robust.
+The EU GDPR sets out `detailed requirements`_ for companies and organisations on collecting, storing and managing personal data. It applies both to European organisations that process personal data of individuals in the EU, and to organisations outside the EU that target people living in the EU.
 
-PrivacyCred is designed specifically for some important use cases where especially
-sensitive personal data is handled, like when people at risk of exclusion is involved or
-with some health data flows. A high degree of privacy and unlinkability is the first
-design criteria. It also supports scenarios where physical, on-person verification of
-identity of holder is needed and where normal W3C Verifiable Credential flows are not
-fully suitable as they are normally designed currently.
+.. _`detailed requirements`: https://europa.eu/youreurope/business/dealing-with-customers/data-protection/data-protection-gdpr/
+
+The GDPR applies strict rules for processing data based on **consent**. The purpose of these rules is to ensure that the individual **understands what he or she is consenting to**.
+
+The interaction between an organisation and a citizen regarding consent could be summarised as:
+
+1. **Privacy notice**: the citizen receives a `request`_ from the organisation, in a concise, transparent, intelligible, and easily accessible form and written in clear and plain language.
+
+2. **Explicit consent**: consent should be freely given, specific, informed and unambiguous. Consent should be given by an affirmative act, such as checking a box online or signing a form (:cite:t:`edpbGuidelines0520202020`).
+
+3. **Keeping a record**: the organisation must be able to prove that it acts in accordance with the GDPR and fulfils all applicable obligations — particularly upon request or inspection from the Data Protection Authority.
+
+
+.. _`request`: https://gdpr.eu/privacy-notice/
+
+However, there is no standard or specification for an interoperable **consent record, or a digital receipt of consent** that the citizen can keep. As a result, neither individuals nor organisations can easily track their consents or know who to hold accountable in the event of a violation of their consent. And this is even more difficult when in th escenario there are two organisations acting as *joint controllers* (:cite:t:`edpbGuidelines0720202020`).
+
+A record of a consent enhances the ability to maintain and manage permissions for personal data by both the individual and the organization. Much like a retailer giving a customer a cash register receipt as a record of a purchase transaction, an organization should similarly create a record of a consent interaction and give it to the individual, defined here as a Consent Receipt. The creation and implementation of this standardized format will promote consistent consent practices, support consent management interoperability between systems, and enable proof of consent.
+
+This document describes an implementation of Consent Receipt using Self-Sovereign Identity (SSI), using W3C Verifiable Credentials for representation and a Blockchain to help in verification.
+
+The data model is based on the work being currently performed to elaborate the future ISO/IEC 27560 (it is still elaborating the first draft). In addition, there have been in the past several efforts to standardise the data involved in a consent transaction, most notably the one by the `Advanced Notice & Consent Receipt Work Group <https://kantarainitiative.org/groups/advanced-notice-consent-receipt-work-group/>`_ from the `Kantara Initiative <https://kantarainitiative.org/>`_. Their work was an important input for the current ISO/IEC 29184:2020 *Information technology — Online privacy notices and consent*.
+
+The current standards were developed before the European GDPR was enforced, and the proposal in this document is based on several efforts to adapt the current specs to the GDPR.
+
+In addition, this document proposes an adaptation of those models to the new world of SSI, by mapping and extending slightly the existing data models to fit the W3C Verifiable Credential Data Model.
+
+The focus in this document is not in the detailed consent records that Data Controllers or Data Processors have to keep in their systems (e.g, for auditing purposes by a regulator). Instead, the focus is on the Consent Receipts that the Citizen should receive from the entities managing her data. In some sense, such Consent Receipts are a subset of the full Consent Records that are stored in the processing systems of the entities.
+
 
 **PrivacyConsent**
 
-The first part describes the :doc:`PrivacyConsent <ssi/privacyconsent>` flows on top of
-PrivacyCred for very strict use cases, like managing the informed consent of a user in the
-collective of people at risk of exclusion, when two or more entities are involved in the
-secure and legal exchange of sensitive personal data, to collaborate to provide a better
-service to the citizen.
+The first part describes :doc:`PrivacyConsent <ssi/privacyconsent>`, a system that allows
+a citizen to manage informed consent to two independent entities to exchange personal data
+among them for a very specific purpose, like managing the informed consent of a user in
+the collective of people at risk of exclusion, when two or more entities are involved in
+the secure and legal exchange of sensitive personal data, to collaborate to provide a
+better service to the citizen.
+
+PrivacyConsent is based on PrivacyCred, a generic credential system which is designed to
+be secure, privacy-preserving, scalable, performant and robust.
 
 **PrivacyCred**
 
-The secod part describes the :doc:`PrivacyCred <ssi/privacycred>` system, including the data
-model, interfaces and main interactions. Understanding the caharacteristics of the
+The secod part describes the :doc:`PrivacyCred <ssi/privacycred>` system, including the
+data model, interfaces and main interactions. Understanding the caharacteristics of the
 underlying system is important to understand how PrivacyConsent works.
 
+PrivacyCred is designed specifically for some important use cases where especially
+sensitive personal data is handled. A high degree of privacy and unlinkability is the
+first design criteria. It also supports scenarios where physical, on-person verification
+of identity of holder is needed and where normal W3C Verifiable Credential flows are not
+fully suitable as they are normally designed currently.
 
 
 .. toctree::
@@ -38,6 +67,8 @@ underlying system is important to understand how PrivacyConsent works.
 
    ssi/privacyconsent
    ssi/privacycred
-   
+   ssi/references
+
+
 
 

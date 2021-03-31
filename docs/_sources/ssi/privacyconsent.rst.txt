@@ -81,28 +81,28 @@ An example of a Consent Receipt in JSON format is the following.
 
   {
       "version": "2.0",
+      "receiptID": "c0fbfbd3-f380-4cb4-a4f9-328621c3824d",
+      "receiptTimestamp": "1551959162",
+      "consentID": "9adf514a-3a77-415c-86a0-569c075ee547",
+      "consentTimestamp": "1551959162",
+      "validity": "90 days",
       "jurisdictions": [
           "EEA"
       ],
-      "receiptID": "c0fbfbd3-f380-4cb4-a4f9-328621c3824d",
-      "receiptTimestamp": "1551959162",
-      "consentTimestamp": "1551959162",
       "collectionMethod": "W3CVC",
       "language": "en",
       "dataSubjectID": "did:peer:0z6MkpTHR8VNsBxYAAWHut2Geadd9jSwuBV8xRoAnwWsdvktH",
       "consentType": "EXPLICIT",
-      "withdrawConsent": "https://trub.com/consent/v2.3/withdraw",
       "rights": [
           "https://trub.com/consent/v2.3/rights"
       ],
+      "withdrawConsent": "https://trub.com/consent/v2.3/withdraw",
       "isChild": false,
-      "validity": "90 days",
-      "consentID": "9adf514a-3a77-415c-86a0-569c075ee547",
       "verificationKey": "66D6EBEEF47B5D6D421417874BDC9A5F9A8FD2D1C881FAAB7EF21EC02FB40D67",
       "collectedBy": "The Trusted Business Inc.",
       "controllers": [
           {
-              "controllerDID": "did:elsi:VATES-A81948077",
+              "controllerID": "did:elsi:VATES-A81948077",
               "controllerName": "The Trusted Business Inc.",
               "controllerWebsite": "https://trub.com/",
               "controllerContact": [
@@ -158,19 +158,26 @@ Version
   The version of the specification to which a receipt conforms.  
   The value MUST be "2.0" for this version of the specification.
 
-Jurisdictions
-  Jurisdiction(s) applicable to this transaction. This field MUST contain a non-empty list of strings describing the jurisdiction(s). Each string in the list MUST describe a country (using ISO 3166) or a legislative region (such as EU).
-
 Receipt ID
   A unique number for each Consent Receipt. SHOULD use UUID-4 [RFC 4122]. This field MUST contain a non-empty string.
 
 Receipt Timestamp
   Date and time of the receipt. The JSON value MUST be expressed as the number of seconds since 1970-01-01 00:00:00 GMT. ISO 8601 Date and Time Format [ISO 8601] MUST be used for formatting
 
-  This field specifies the timestamp at which the receipt was generated/provided to the data subject. This timestamp can be separate from the timestamp of the given consent.
+Consent ID
+  This field is used to specify the internal consent ID used by the Controller to refer to consent. Controllers may wish to provide this for convenience in their communication with the data subject for referring to this specific consent.
 
 Consent Timestamp
   Date and time of when consent was given by the data subject. The JSON value MUST be expressed as the number of seconds since 1970-01-01 00:00:00 GMT. ISO 8601 Date and Time Format [ISO 8601] MUST be used for formatting.
+
+Validity
+  Validity or duration of consent after which the consent can no longer be used as a legal basis.
+  The validity can be a specific date-time, or a duration (e.g. 6 months), or based on an event or condition (e.g., "as long as account is valid").
+
+Jurisdictions
+  Jurisdiction(s) applicable to this transaction. This field MUST contain a non-empty list of strings describing the jurisdiction(s). Each string in the list MUST describe a country (using ISO 3166) or a legislative region (such as EU).
+
+  This field specifies the timestamp at which the receipt was generated/provided to the data subject. This timestamp can be separate from the timestamp of the given consent.
 
 Collection Method
   A description of the method by which consent was obtained.
@@ -179,99 +186,92 @@ Language
   Language used to obtain consent. MUST use ISO 639-1:2002 [ISO 639] if this field is used.
 
 Data Subject ID
-  Identifier used to denote the Data Subject’s identity for consent. It has to be the Peer DID that the data subject self-generated.
+  Identifier used to denote the Data Subject’s identity for consent. It has to be the Peer DID that the data subject self-generated especifically for this interaction.
 
 Consent Type
-  Type denotes nature of given consent in its relation to the data subject. In this extension the default value is "EXPLICIT”
-
-Withdraw Consent
-  Information about withdrawing consent according to rights provided by the GDPR.
-
-Consent ID
-  This field is used to specify the internal consent ID used by the Controller to refer to consent. Controllers may wish to provide this for convenience in their communication with the data subject for referring to this specific consent.
-
-Validity
-  Validity or duration of consent after which the consent can no longer be used as a legal basis.
-  The validity can be a specific date-time, or a duration (e.g. 6 months), or based on an event or condition (e.g., "as long as account is valid").
+  Type denotes nature of given consent in its relation to the data subject. In this context the default value is "EXPLICIT”
 
 Rights
   Rights include Right to Rectify, Right to Data Portability. The Right to Withdraw is specified in the “withdrawConsent” field.
 
-Fields about Data Controller
-****************************
+Withdraw Consent
+  Information about withdrawing consent according to rights provided by the GDPR.
 
 Verification Key
-  Cryptographic key used to verify the receipt’s integrity, normally the Controller’s Public Key.
+  Cryptographic key used to verify the receipt’s integrity, normally the Controller’s Public Key. MUST be in JWK format.
 
 Collected By
   Consent can be collected by another entity on behalf of the Controller, which can be specified by this field. The field is optional, and its absence indicates the consent was collected by the same Controller as defined in the receipt. 
 
+Fields about Data Controllers
+*****************************
+
 Controllers
-  Identities of the Controllers to whom the consent is applicable. Each item in the list of Controllers must specify the identity, website, contact, DPO, and policies for that Controller.
+  An array with the identities of the Controllers to whom the consent is applicable. Each item in the list of Controllers must specify the identity, website, contact, DPO, and policies for that Controller:
 
-Controller Website
-  The website of the Controller.
+  Controller ID
+    The identity of the Controller, represented as an ELSI DID.
+    
+  Controller Name
+    The legal name of the organisation. 
 
-Controller Contact
-  Contact details of the Controller. There can be multiple contacts such as phone number, email, twitter handle. Each contact must be accompanied with a description of its type e.g. @acmeinc (twitter)
+  Controller Website
+    The website of the Controller.
 
-Policies
-  Links to the Data Controller's policies such as privacy statement/policy and applicable terms of use in effect when the consent was obtained, and the receipt was issued. If a policy changes, the link SHOULD continue to point to the old policy until there is evidence of an updated consent from the Data Subject.  
+  Controller Contact
+    Contact details of the Controller. There can be multiple contacts such as phone number, email, twitter handle. Each contact must be accompanied with a description of its type e.g. @acmeinc (twitter)
 
-Controller ID
-  The identity of the Controller, represented as an ELSI DID.
-  
-Controller Name
-  The legal name of the organisation. 
+  Controller DPO Contact
+    This field is used to specify the contact details of the Controller’s DPO
+    There can be multiple contacts such as phone number, email, twitter handle. Each contact must be accompanied with a description of its type e.g. @acmeinc (twitter)
 
-Controller DPO Contact
-  This field is used to specify the contact details of the Controller’s DPO
-  There can be multiple contacts such as phone number, email, twitter handle. Each contact must be accompanied with a description of its type e.g. @acmeinc (twitter)
+  Policies
+    Links to the Data Controller's policies such as privacy statement/policy and applicable terms of use in effect when the consent was obtained, and the receipt was issued. If a policy changes, the link SHOULD continue to point to the old policy until there is evidence of an updated consent from the Data Subject.  
 
 Fields about Purposes, Processing, and Personal Data
 ****************************************************
 
 Purposes
-  The receipt can contain one or more purposes that provide explanation for the processing of personal data.
+  An array with one or more purposes that provide explanation for the processing of personal data. Each entry has the following information.
 
-Purpose
-  A short, clear explanation of why the personal data is required to be processed. Each purpose should specify the personal data, sensitive personal data, processing categories, data storage, involved third parties, international transfers, profiling, and automated decision making.
+  Purpose
+    A short, clear explanation of why the personal data is required to be processed. Each purpose should specify the personal data, sensitive personal data, processing categories, data storage, involved third parties, international transfers, profiling, and automated decision making.
 
-Personal Data
-  A list of Personal Data Categories required for use in the specified Purpose. Each category should be well defined and published - such as in code of practice. Each Purpose can have one or more categories of personal data associated with it. Categories that are sensitive should be listed in the Sensitive Personal Data field.
+  Personal Data
+    A list of Personal Data Categories required for use in the specified Purpose. Each category should be well defined and published - such as in code of practice. Each Purpose can have one or more categories of personal data associated with it. Categories that are sensitive should be listed in the Sensitive Personal Data field.
 
-Sensitive Personal Data
-  A list of Sensitive Personal Data Categories required for use in the specified Purpose. Each category should be well defined and published - such as in code of practice. Categories that are not sensitive should be listed in the Personal Data field.
+  Sensitive Personal Data
+    A list of Sensitive Personal Data Categories required for use in the specified Purpose. Each category should be well defined and published - such as in code of practice. Categories that are not sensitive should be listed in the Personal Data field.
 
-Third Parties
-  Indicates if the Data Controller is disclosing Personal Data to a third party for the specified purpose. Each listed third party or third-party category in the list must have a role associated with it e.g. Processor, Law Agency.
+  Third Parties
+    Indicates if the Data Controller is disclosing Personal Data to a third party for the specified purpose. Each listed third party or third-party category in the list must have a role associated with it e.g. Processor, Law Agency.
 
-Third Party ID
-  The ELSI DID of the Third Party.
+  Third Party ID
+    The ELSI DID of the Third Party.
 
-Third Party Name
-  The name the Third Party the Controller will disclose the Personal Data to. Must be accompanied by the role e.g. Processor.
+  Third Party Name
+    The name the Third Party the Controller will disclose the Personal Data to. Must be accompanied by the role e.g. Processor.
 
-Third Party Role
-  Describes the role of the third party to whom data is disclosed for the specified purpose e.g. Processor or Partner
+  Third Party Role
+    Describes the role of the third party to whom data is disclosed for the specified purpose e.g. Processor or Partner
 
-Profiling
-  This field is used to indicate if the specified purpose involves profiling.
+  Profiling
+    This field is used to indicate if the specified purpose involves profiling.
 
-  In GDPR, ‘profiling’ means any form of automated processing of personal data consisting of the use of personal data to evaluate certain personal aspects relating to a natural person, in particular to analyse or predict aspects concerning that natural person’s performance at work, economic situation, health, personal preferences, interests, reliability, behaviour, location or movements;
+    In GDPR, ‘profiling’ means any form of automated processing of personal data consisting of the use of personal data to evaluate certain personal aspects relating to a natural person, in particular to analyse or predict aspects concerning that natural person’s performance at work, economic situation, health, personal preferences, interests, reliability, behaviour, location or movements;
 
-Automated decision making
-  This field is used to indicate if the specified purpose is solely based on automated measures that produce legal effects for the data subject.
+  Automated decision making
+    This field is used to indicate if the specified purpose is solely based on automated measures that produce legal effects for the data subject.
 
-  This is mentioned in GDPR as decision based solely on automated processing, including profiling, which produces legal effects for the data subjects or similarly significantly affects him or her.
+    This is mentioned in GDPR as decision based solely on automated processing, including profiling, which produces legal effects for the data subjects or similarly significantly affects him or her.
 
-Processing Categories
-  This field is used to list the processing categories associated with a purpose.
+  Processing Categories
+    This field is used to list the processing categories associated with a purpose.
 
-  Describes the data processing actions/activities carried out over personal data for the specified purpose. E.g. collect, use, store, share.
+    Describes the data processing actions/activities carried out over personal data for the specified purpose. E.g. collect, use, store, share.
 
-Data Storage
-  This field is used to specify the data storage duration or conditions associated with the purpose.
+  Data Storage
+    This field is used to specify the data storage duration or conditions associated with the purpose.
 
-  The data storage field can specify the date/time or duration, or a condition or event (e.g. as long as account is active) after which the data will be erased and will no longer be used for the specified purpose
+    The data storage field can specify the date/time or duration, or a condition or event (e.g. as long as account is active) after which the data will be erased and will no longer be used for the specified purpose
 

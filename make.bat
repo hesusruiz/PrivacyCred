@@ -26,6 +26,14 @@ if errorlevel 9009 (
 )
 
 %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+if "%1" == "html" (
+	rem Prepare for Github Pages, that expects HTML files in the root
+	rem Copy files from the html subdirectory to the build dir
+	xcopy %BUILDDIR%\html %BUILDDIR%\ /s /d /y /q
+	rem Disable automatic execution of Jekyill by GHPages
+	xcopy .nojekyll %BUILDDIR%\ /d /y /q
+)
+
 goto end
 
 :help
