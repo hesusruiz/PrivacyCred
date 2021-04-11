@@ -26,6 +26,7 @@ if errorlevel 9009 (
 )
 
 %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+
 if "%1" == "html" (
 	rem Prepare for Github Pages, that expects HTML files in the root
 	rem Copy files from the html subdirectory to the build dir
@@ -35,6 +36,14 @@ if "%1" == "html" (
 )
 
 goto end
+
+if "%1" == "pdf" (
+    %SPHINXBUILD% -b pdf -e dotted_toc %SOURCEDIR% %BUILDDIR%/pdf %SPHINXOPTS% %O%
+    echo.
+    echo.Build finished. The PDF files are in %BUILDDIR%/pdf
+    goto end
+)
+
 
 :help
 %SPHINXBUILD% -M help %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%

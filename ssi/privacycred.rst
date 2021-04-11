@@ -1,6 +1,7 @@
-    
-PrivacyCred
-===========
+ 
+PrivacyCred system
+==================
+
 
 Requirements
 ------------

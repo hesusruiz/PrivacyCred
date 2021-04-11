@@ -1,0 +1,65 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Annotated eHealth Network Trust Framework}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Introduction}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Business needs and requirements}{7}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Main design principles and business requirements}{8}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}User roles}{11}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}ID binding and verification}{11}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Trust architecture}{12}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Overall description}{12}{subsubsection.2.3.1}%
+\contentsline {paragraph}{Country A (country of issuance)}{13}{paragraph*.2}%
+\contentsline {subparagraph}{List of authorised issuers}{14}{subparagraph*.3}%
+\contentsline {subparagraph}{Health data repository}{16}{subparagraph*.4}%
+\contentsline {subparagraph}{Signing key issuance service}{16}{subparagraph*.5}%
+\contentsline {subparagraph}{Signing keys or certificates}{16}{subparagraph*.6}%
+\contentsline {subparagraph}{Provision of keys with metadata}{16}{subparagraph*.7}%
+\contentsline {subparagraph}{Health certificate issuance service}{17}{subparagraph*.8}%
+\contentsline {subparagraph}{Health certificate revocation list (HCRL)}{17}{subparagraph*.9}%
+\contentsline {subparagraph}{Online verification (webapp, browser\sphinxhyphen {}based) \textendash {} for future consideration}{17}{subparagraph*.10}%
+\contentsline {subparagraph}{Online verification (endpoint, API) \textendash {} for future consideration}{17}{subparagraph*.11}%
+\contentsline {subparagraph}{Online verification (phone service)}{18}{subparagraph*.12}%
+\contentsline {paragraph}{Country B (country of verification)}{18}{paragraph*.13}%
+\contentsline {subparagraph}{List of certified verifiers}{18}{subparagraph*.14}%
+\contentsline {subparagraph}{Fetch and use}{18}{subparagraph*.15}%
+\contentsline {subparagraph}{Trusted signing public keys, certificates or CAs}{18}{subparagraph*.16}%
+\contentsline {subparagraph}{Vaccination certificate verifier app}{18}{subparagraph*.17}%
+\contentsline {paragraph}{Central services}{19}{paragraph*.18}%
+\contentsline {subparagraph}{EU Public Key Directory/Gateway}{19}{subparagraph*.19}%
+\contentsline {subsubsection}{\numberline {2.3.2}Legal basis}{19}{subsubsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.4}Data formats}{20}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}UTF\sphinxhyphen {}8}{20}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}FHIR}{20}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}CBOR/COSE}{20}{subsubsection.2.4.3}%
+\contentsline {subsection}{\numberline {2.5}Presentation formats}{20}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}2D Barcode}{20}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}W3C Verifiable Credentials}{20}{subsubsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.6}Cryptography}{20}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Data signing}{20}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}Data encryption}{21}{subsubsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.7}Verification protocols}{21}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {2.7.1}Offline}{21}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.2}Online}{21}{subsubsection.2.7.2}%
+\contentsline {section}{\numberline {3}PrivacyCred system}{21}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Requirements}{21}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Main design principles and business requirements}{22}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}ID binding and verification}{24}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}PrivacyCred: General description of the system}{25}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Main components}{25}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Main credential flow}{26}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}The Trust Framework: bootstrapping the system}{28}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Public\sphinxhyphen {}Permissioned blockchain network}{28}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}Information in the blockchain and Personal Identifiable Information (PII)}{28}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}Trust Framework: trusted registration process of legal entities}{29}{subsubsection.3.3.3}%
+\contentsline {paragraph}{Creating identities}{29}{paragraph*.20}%
+\contentsline {subsection}{\numberline {3.4}Credential flows}{32}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Credential Issuance}{32}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Credential Verification}{34}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}ELSI: a DID Method for legal entities}{34}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}ELSI DID syntax}{34}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}ELSI DID Document}{36}{subsubsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.6}PrivacyCred Verifiable Credentials}{37}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Data Model}{37}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Example of Verifiable Credential}{38}{subsubsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.7}Verification of the credentials}{39}{subsection.3.7}%
+\contentsline {section}{\numberline {4}References}{42}{section.4}%

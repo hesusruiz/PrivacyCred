@@ -1,0 +1,687 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2. Annotated eHealth Network Trust Framework &#8212; PrivacyCred</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/better.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. PrivacyCred system" href="privacycred.html" />
+    <link rel="prev" title="1. Introduction" href="introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <link rel="stylesheet" href="../_static/my_style.css" type="text/css" />
+  </head><body>
+
+    <nav class="navbar navbar-dark bg-primary shadow">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../index.html ">
+          PrivacyCred
+        </a>
+      </div>
+    </nav>
+  <div class="related top">
+  <nav id="rellinks">
+    <ul>
+        <li>
+          «
+          <a href="introduction.html" title="Previous document"><span class="section-number">1. </span>Introduction</a>
+        </li>
+        <li>
+          <a href="privacycred.html" title="Next document"><span class="section-number">3. </span>PrivacyCred system</a>
+          »
+        </li>
+    </ul>
+  </nav>
+  <nav id="breadcrumbs">
+    <ul>
+      <li><a href="../index.html">Home</a></li> 
+    </ul>
+  </nav>
+  </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="annotated-ehealth-network-trust-framework">
+<h1><span class="section-number">2. </span>Annotated eHealth Network Trust Framework<a class="headerlink" href="#annotated-ehealth-network-trust-framework" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><span class="section-number">2.1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The European Council has repeatedly called for a coordinated approach<a class="footnote-reference brackets" href="#id4" id="id1">1</a> on interoperable vaccination certificates and the mutual recognition of test results.</p>
+<p>The Guidelines<a class="footnote-reference brackets" href="#id5" id="id2">2</a> adopted by the eHealth Network<a class="footnote-reference brackets" href="#id6" id="id3">3</a> rest on three pillars: a minimum data set, a standard unique identifier for such proofs, and a trust framework, which provides the basis for establishing the certificates’ authenticity, integrity and validity.</p>
+<p>This document outlines the trust framework and provides the basis for discussion with Member States on the implementation of interoperable certificates in EU Member States. Further elaboration on the specifications of the technical implementation will follow. The document may be subject to future modification as the COVID-19 situation evolves.</p>
+<div class="figure align-default" id="id7">
+<a class="reference internal image-reference" href="../_images/ehealth_figure1.png"><img alt="Mock-ups of a paper and digital vaccination certificate, as an example" src="../_images/ehealth_figure1.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2.1 </span><span class="caption-text">Mock-ups of a paper and digital vaccination certificate, as an example</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<p>The trust framework defines the rules, policies, protocols, formats and standards needed to ensure that Covid-19 health certificates are issued in such a way that their authenticity and integrity can be verified and trusted.</p>
+<p>The trust framework shall be flexible enough to encompass different use cases. It defines provisions that allow both digital and analogue, off-line and on-line versions of the COVID-19 health certificates, as well as the associated verification.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference external" href="https://www.consilium.europa.eu/media/47296/1011-12-20-euco-conclusions-en.pdf">https://www.consilium.europa.eu/media/47296/1011-12-20-euco-conclusions-en.pdf</a></p>
+</dd>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>eHealth Network guidelines on proof of vaccination for medical purposes - basic interoperability elements, adopted and published on 27 January 2021. Published here.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>The eHealth Network is a voluntary network created under article 14 of Directive 2011/24/EU on the application of patients’ rights in cross-border healthcare. It provides a platform for Member States’ competent authorities responsible for eHealth.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="business-needs-and-requirements">
+<h2><span class="section-number">2.2. </span>Business needs and requirements<a class="headerlink" href="#business-needs-and-requirements" title="Permalink to this headline">¶</a></h2>
+<p>The journey of the Covid-19 health certificate is completed in 3 distinct steps:</p>
+<ol class="arabic simple">
+<li><p>the collection and registration of data about the medical events for competent authorised entities in a health information system,</p></li>
+<li><p>the issuance of the Covid-19 health certificate, and</p></li>
+<li><p>the presentation of the Covid-19 health certificate to a verifier (e.g. a border guard or a healthcare professional) for its verification.</p></li>
+</ol>
+<div class="figure align-default" id="id8">
+<a class="reference internal image-reference" href="../_images/ehealth_figure2.jpg"><img alt="Main steps of the vaccination journey" src="../_images/ehealth_figure2.jpg" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2.2 </span><span class="caption-text">Main steps of the vaccination journey, as an example of the generation and use of a health certificate</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<p>A certificate relies on a minimum dataset. Included in the minimum dataset is a Unique Vaccination Certificate/assertion identifier (UVCI), which could be used as a link to the underlying data registry. The use of UVCI or other methods for online verification will be defined in more detail in the next versions of the Trust Framework.</p>
+<div class="topic">
+<p class="topic-title">PrivacyCred</p>
+<p>The PrivacyCred implementation uses a UUID Version 4 which is truly random as specified in <a class="reference external" href="https://tools.ietf.org/html/rfc4122">RFC 4122</a>. The UUID has no relationship at all with any data inside the certificate and so is unlinkable.
+Each certificate has a different UUID even if they refer to the same person.</p>
+</div>
+<p>The verifier of a certificate should be able to establish that:</p>
+<ul class="simple">
+<li><p>The certificate has been issued by an authorised entity;</p></li>
+<li><p>The information presented on the certificate is authentic, valid, and has not been altered;</p></li>
+<li><p>The certificate can be linked to the holder of the certificate;</p></li>
+</ul>
+<div class="section" id="main-design-principles-and-business-requirements">
+<h3><span class="section-number">2.2.1. </span>Main design principles and business requirements<a class="headerlink" href="#main-design-principles-and-business-requirements" title="Permalink to this headline">¶</a></h3>
+<p>The design of the trust framework for EU-interoperable issuing of COVID-19 health certificates and verification of their integrity and authenticity relies on key design principles listed below. The list is not prioritised. Instead, the trust framework that is specified later in the document attempts to optimise as many of the key design principles as possible.</p>
+<dl>
+<dt><strong>Cross-border interoperability.</strong></dt><dd><p>National implementations of certificates that comply with the specifications of the trust framework should be interoperable. This means that if Countries A and B implement the specifications, it should be possible for a verifier in Country B to verify a digital vaccination certificate that has been issued in Country A.</p>
+<p>Cross-border interoperability should be ensured across EU and EEA countries. The Trust Framework should not prevent interoperability with the solutions designed on a global level, such as the one being developed by the WHO or ICAO. This is one of the primary design principles and it has implications in all components of the proposed trust framework.</p>
+</dd>
+<dt><strong>Data protection (including data minimisation, purpose limitation, etc.).</strong></dt><dd><p>The trust framework should protect the data of the involved individual stakeholders (most importantly, certificate holders). This covers several data protection dimensions catered by the General Data Protection Regulation, including purpose limitation and data minimisation. In practice, only the bare minimum set of data that is required for the supported use cases should be processed (data minimisation) and the purpose of data collection should be checked against the use cases (purpose limitation). Similarly, only the bare minimum set of data that is required for the supported use cases should be presented to a specific verifier (data minimisation) and the purpose of data presentation should be checked against the use cases (purpose limitation). In order to achieve the latter, the trust framework may support different presentation datasets for different verifier scenarios. The data protection principle has a strong impact on the specification of the Minimum Dataset and the design of the use cases of the trust framework.</p>
+</dd>
+<dt><strong>Data security and privacy by design and by default.</strong></dt><dd><p>Abuse of data by actors (especially, the certificate verifiers and holders) and forgery should be prevented by any reasonable means. The trust framework should by design and default ensure the security and the privacy of data in the compliant implementations of digital vaccination certificate systems, ensuring both security and privacy. Available tools should be used for restricting access to data and preventing malicious use of data, while the establishing of the authenticity of data and its link to the certificate holder should be ensured. The design should prevent the collection of identifiers or other similar data which might be crossreferenced with other data and re-used for tracking (‘Unlinkability’). Further discussions are needed as to the technological aspects and timeline for the incorporation of these features in the trust framework.</p>
+</dd>
+<dt><strong>Inclusiveness (especially medium-neutrality).</strong></dt><dd><p>The trust framework should be inclusive both towards Member States’ approaches and the individual citizen (‘no citizen left behind’). The design of the trust framework should attempt to maximize its support for diverse contexts (e.g., high resource vs low resource contexts). To enable this, the trust framework should support a spectrum of certificate presentation media from plain paper certificate to augmented paper certificates (e.g., paper certificate with printed machinereadable parts such as barcodes, QR codes, Machine Readable Zones) and to purely digital certificates (e.g., in-app certificates).</p>
+</dd>
+</dl>
+<div class="topic">
+<p class="topic-title">PrivacyCred</p>
+<p>The PrivacyCred system supports paper certificates, augmented paper certificates, QR codes and purely digital certificates.</p>
+<p>In addition, contrary to many SSI Verifiable Credentials implementations, the PrivacyCred system is implemented as a PWA (Progressive Web App) that can be used simply in a mobile browser (or tablet/PC) without installing anything in the device or registering for anything.</p>
+<p>However, the user can install the PWA in the device if the user so wishes to facilitate future uses. In any case, the system does not require any type of registration of the identity of the user.</p>
+</div>
+<dl class="simple">
+<dt><strong>Simplicity and user-friendliness.</strong></dt><dd><p>It is very important that the trust framework is designed with simplicity and user-friendliness of the possible implementation of digital certificate systems in mind. More formally, the trust framework should not have features or functionalities that would unnecessarily complicate the resulting implementation of a digital vaccination certificate system or make them unnecessarily difficult to use. Lack of simplicity could increase the time it takes to implement the compliant digital vaccination certificate systems, while lack of user friendliness could hinder the uptake of the resulting implementations. User-friendliness is relevant for quick and easy processing, specifically to certificate holders and to verifiers.</p>
+</dd>
+</dl>
+<div class="topic">
+<p class="topic-title">PrivacyCred</p>
+<p>The PrivacyCred system follows the rule of <em>Occam’s Razor</em> eliminating any feature or functionality which is not strictly required for the use case.</p>
+<p>This not only provides simplicity and user-friendlyness but also provides a system easier to understand and maintain which is more secure and robust.</p>
+</div>
+<dl class="simple">
+<dt><strong>Implementation flexibility.</strong></dt><dd><p>The trust framework specifications should provide implementers with a variety of options when developing digital vaccination certificate systems according to the trust framework specifications. This key design principle aims at reducing the implementation time and leveraging/reusing existing infrastructures in Member States. To satisfy this principle, the trust framework specifies, whenever possible, a list of alternative methods, flows, architectures and implementation options, for example alternative presentation media, verification options, implementation technologies, etc. whilst still guaranteeing the same level of trustworthiness.</p>
+</dd>
+<dt><strong>Modularity and scalability.</strong></dt><dd><p>This is strongly linked with the previous key design principle. The trust framework architecture should be modular and easily scalable, for instance, to additional usage scenarios, use cases and types of certificates. The trust framework already supports different usage scenarios (e.g. alternative settings in which certificates may be requested or verification may take place). Examples of other types of certificates that could be supported by potential extensions of the trust framework include certificate of negative COVID-19 tests and certificates of recovery from COVID-19, while examples of other use cases that could be supported are travel or (participation in) leisure activities (i.e. proof of vaccination for non-health-related purposes in domestic or international settings). Decisions related to ethical, societal or political questions pertaining to the use cases should be tackled separately. To satisfy this key design principle, special attention has been paid in the design of the trust framework architecture with clear separation of the steps of the user story detailed below.</p>
+</dd>
+</dl>
+<div class="topic">
+<p class="topic-title">PrivacyCred</p>
+<p>The PrivacyCred system was designed from the ground up to fully support use cases like certificates of negative COVID-19 tests, certificates of recovery from COVID-19, vacccination certificates, and their potential use in travel and leisure activities.</p>
+<p>It has been designed explicitly to maintain total unlinkability among certificates and each of them are treated as if they were a unique “piece of paper” but with the power of the digitalization. That means that the system is not suitable for use cases where linkability is required. In any case, that linkability should be implemented in the existing information systems of the health entities issuing the certificates.</p>
+</div>
+<dl class="simple">
+<dt><strong>Open standards.</strong></dt><dd><p>The trust framework should rely for its implementations on open standards, to the extent that this is possible. This will greatly contribute to the interoperability of the resulting implementations, in addition combined with open governance and open source implementations, it will instil trust in the involved stakeholders.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="user-roles">
+<h3><span class="section-number">2.2.2. </span>User roles<a class="headerlink" href="#user-roles" title="Permalink to this headline">¶</a></h3>
+<p>The user roles that are associated with the supported user stored of the trust framework are presented in the table below.</p>
+<table class="colwidths-given docutils align-default" id="id9">
+<caption><span class="caption-number">Table 2.1 </span><span class="caption-text">Roles in the system</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 33%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ROLE</p></th>
+<th class="head"><p>DESCRIPTION</p></th>
+<th class="head"><p>EXAMPLES</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Certificate Issuer</p></td>
+<td><p>The trusted entity that issues and signs a statement/credential/certificate.</p></td>
+<td><p>For paper certificates, a healthcare organisation or healthcare authority. For digital certificates, an electronic medical record system, an IIS, a HP portal, a patient portal, a system used by another relevant authority.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Certificate Holder</p></td>
+<td><p>The person in possession of a certificate.</p></td>
+<td><p>A person, their guardian, legal representative or another authorized person.</p></td>
+</tr>
+<tr class="row-even"><td><p>Certificate Reader</p></td>
+<td><p>The actor (a person or a computer system) analysing the contents of a certificate presented by a certificate holder.</p></td>
+<td><p>A healthcare professional or another person or a system entitled to the detailed information on the certificate (e.g., a healthcare appointment system).</p></td>
+</tr>
+<tr class="row-odd"><td><p>Certificate Verifier</p></td>
+<td><p>The actor (a person or a computer system) checking the validity of a certificate presented by a certificate holder.</p></td>
+<td><p>An authority, an online system used by the certificate holder (for example, an online check-in)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id-binding-and-verification">
+<h3><span class="section-number">2.2.3. </span>ID binding and verification<a class="headerlink" href="#id-binding-and-verification" title="Permalink to this headline">¶</a></h3>
+<p>An important parameter of the trust framework pertains to the identity of the subject of the certificate i.e., the person for whom the certificate is issued. The identity of this subject shall be bound to a certificate when the latter is issued (ID binding) and has to be verified when the certificate is being presented and verified (ID verification). These two processes (ID binding at the Issuance step and ID verification at the Presentation and Verification step) prevent possible impersonation attempts (i.e., a person fraudulently presenting a certificate that has been issued to someone else as if it were their own), and are in line with the data security and privacy by design and default principles of the trust framework.</p>
+<p>The processes of ID binding and/or verification may be optional for some usage scenarios in the scope of the trust framework. For instance, in some settings the simple presentation of the certificate to a healthcare professional for medical purposes might be enough without additional actions for proving the ownership of the certificate if complemented by good clinical practices. However, in those usage scenarios where the aforementioned process cannot be omitted, the trust framework, adhering to the simplicity and user-friendliness principle, shall rely on (nationally and/or internationally) established methods for ID binding and verification. In other words, the trust framework does not specify in its architecture dedicated components or modalities for undertaking the ID binding and verification process.</p>
+<p>The recommended methods for performing ID binding and verification employ nationally issued identity proof documents, such as national IDs and passports. Such identity proof documents should be presented at the time of issuance (ID binding) and verification (ID verification) of the certificate and therein personally identifying information should be compared against the information in the certificate.</p>
+<div class="topic">
+<p class="topic-title">PrivacyCred</p>
+<p>The PrivacyCred system assumes nationally issued identity proof documents for ID binding, both at issuance and verification.</p>
+<p>Contrary to many SSI Verifiable Credentials implementations, the PrivacyCred system does not require any registration on the part of the user (like registering her DID in the blockchain or any other repository).</p>
+<p>The only personal information managed by the system is the one in the minimum dataset as specified in the document <a class="reference external" href="https://ec.europa.eu/health/sites/health/files/ehealth/docs/vaccination-proof_interoperability-guidelines_en.pdf">Guidelines on verifiable vaccination certificates - basic interoperability elements</a> from the eHealth Network.
+The personal data elements are incorporated to the certificate and not used for any other thing or purpose.
+It is assumed that the minimal person identification data specified in the eHealth Network document can be used to perform the ID binding with a national ID, passport or any other suitable nationally issued identity document.</p>
+</div>
+</div>
+</div>
+<div class="section" id="trust-architecture">
+<h2><span class="section-number">2.3. </span>Trust architecture<a class="headerlink" href="#trust-architecture" title="Permalink to this headline">¶</a></h2>
+<p>This chapter provides an overview of the trust architecture and describes its main components. The chapter contains requirements directed at the Member States acting in the roles of issuers and verifiers.</p>
+<p>The WHO is developing a global trust framework based on a similar approach. The framework is centred around the Global Health Trust Anchor operated and governed by the WHO and based on the technical specifications derived from ICAO’s Public Key Directory (PKD) model.</p>
+<div class="section" id="overall-description">
+<h3><span class="section-number">2.3.1. </span>Overall description<a class="headerlink" href="#overall-description" title="Permalink to this headline">¶</a></h3>
+<p>The EU trust framework is designed to be largely decentralised.</p>
+<p>As per the digital contact tracing apps and the European Federation Gateway Service, this reflects the divergent structures and approaches within the EU Member States. That is to say, it aims to avoid centralisation where possible in line with the principle of flexibility.</p>
+<p>However, there are some centralised elements:</p>
+<ol class="arabic simple">
+<li><p>Roots of trust stored in a common directory/gateway (EU Public Key Directory/Gateway), similar to the public key certificate provision process established in the EFGS.</p></li>
+<li><p>Governance model.</p></li>
+</ol>
+<p>The main elements of the system are outlined in Figure 3 and described further below.</p>
+<div class="figure align-default" id="id10">
+<a class="reference internal image-reference" href="../_images/ehealth_figure3.png"><img alt="Overall architecture of the system" src="../_images/ehealth_figure3.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2.3 </span><span class="caption-text">Overall architecture of the system (solid lines = first version of the trust framework specifications; dashed lines = future versions of the trust framework specifications)</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="country-a-country-of-issuance">
+<h4><span class="section-number">2.3.1.1. </span>Country A (country of issuance)<a class="headerlink" href="#country-a-country-of-issuance" title="Permalink to this headline">¶</a></h4>
+<p>The country of issuance, through its competent health entities, is responsible for the recording of health data and issuing certificates. It is also possible for the issuer to deliver a certificate based on reliable information received from other sources.</p>
+<p>The Country A that is participating to the interoperability scheme shall issue certificates at least in the form of the augmented paper (paper augmented with digital artefacts such as barcodes or QR codes). In addition, Country A may issue certificates stored as purely digital files in apps or computers.</p>
+<p>The Country A shall assign a national Public Health Authority (PHA) responsible for the system. The name of the PHA shall be communicated to other members of the interoperability scheme through the eHealth Network secretariat.</p>
+<div class="topic">
+<p class="topic-title">SafeIsland</p>
+<p>The SafeIsland system assumes exactly the same process as explained above.</p>
+</div>
+<div class="section" id="list-of-authorised-issuers">
+<h5><span class="section-number">2.3.1.1.1. </span>List of authorised issuers<a class="headerlink" href="#list-of-authorised-issuers" title="Permalink to this headline">¶</a></h5>
+<p>A system used by Country A for maintaining details about healthcare organisations authorised to issue health certificates.</p>
+<p>The list should be established and maintained by every Country A, and it should be published on its PHA’s website (national backend server). In addition, the list may also be published through an open API.</p>
+<div class="topic">
+<p class="topic-title">SafeIsland</p>
+<p>The SafeIsland system provides a blockchain-based list of authorised issuers. It can be complementary to a national backend server for publishing the list, or even a complete replacement. It is enough that the PHA operates a node in the blockchain network and publishes the data in that node. Automatically, the data is securely hyper-replicated to all other connected nodes where many different types of verifiers can securely and efficiently query the data for verification. This could be very useful for example for certificates used in travel and leisure where the number of verifiers can be much higher than just the airports.</p>
+</div>
+<p>The list should contain the data set following the description given in Table 1.</p>
+<table class="colwidths-given docutils align-default" id="id11">
+<caption><span class="caption-number">Table 2.2 </span><span class="caption-text">List of certified issuers, data set for each entry</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Group and cardinality</p></th>
+<th class="head"><p>Element</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Data type and cardinality</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Issuer identification</div>
+<div class="line">1..1</div>
+</div>
+</td>
+<td><p>Country</p></td>
+<td><p>Country of the issuer</p></td>
+<td><div class="line-block">
+<div class="line">Coding (ISO 3166-1 alpha-2)</div>
+<div class="line">1..1</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">Issuer identification</div>
+<div class="line">1..1</div>
+</div>
+</td>
+<td><p>Name</p></td>
+<td><p>Name of the issuer</p></td>
+<td><div class="line-block">
+<div class="line">String</div>
+<div class="line">1..1</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Issuer identification</div>
+<div class="line">1..1</div>
+</div>
+</td>
+<td><p>Identifier</p></td>
+<td><p>Identifier of the issuer</p></td>
+<td><div class="line-block">
+<div class="line">Identifier (format to be defined later)</div>
+<div class="line">1..1</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">Issuer identification</div>
+<div class="line">1..1</div>
+</div>
+</td>
+<td><p>Public key or PKI certificate</p></td>
+<td><p>Public key or PKI certificate assigned to the issuer</p></td>
+<td><div class="line-block">
+<div class="line">Text (format to be defined later)</div>
+<div class="line">1..*</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Issuer identification</div>
+<div class="line">1..1</div>
+</div>
+</td>
+<td><p>Online verification webapp</p></td>
+<td><p>Address of the online verification webapp, if offered by the issuer</p></td>
+<td><div class="line-block">
+<div class="line">URI</div>
+<div class="line">0..1</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">Issuer identification</div>
+<div class="line">1..1</div>
+</div>
+</td>
+<td><p>Online verification endpoint</p></td>
+<td><p>Address of the online verification service, if offered by the issuer</p></td>
+<td><div class="line-block">
+<div class="line">URI</div>
+<div class="line">0..1</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Issuer authorization</div>
+<div class="line">1..*</div>
+</div>
+</td>
+<td><p>Health certificate type</p></td>
+<td><p>The type of health certificates the issuer is capable and authorised to issue</p></td>
+<td><div class="line-block">
+<div class="line">Coding (value set: vaccination certificate)</div>
+<div class="line">1..1</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">Issuer authorization</div>
+<div class="line">1..*</div>
+</div>
+</td>
+<td><p>Validity from</p></td>
+<td><p>Start of the authorisation period</p></td>
+<td><div class="line-block">
+<div class="line">dateTime</div>
+<div class="line">1..1</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">Issuer authorization</div>
+<div class="line">1..*</div>
+</div>
+</td>
+<td><p>Validity to</p></td>
+<td><p>End of the authorisation period</p></td>
+<td><div class="line-block">
+<div class="line">dateTime</div>
+<div class="line">1..1</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">Issuer authorization</div>
+<div class="line">1..*</div>
+</div>
+</td>
+<td><p>Status</p></td>
+<td><p>Status of the authorisation</p></td>
+<td><div class="line-block">
+<div class="line">Coding (active, inactive, entered-in-error, on-hold, unknown) <a class="reference external" href="https://www.hl7.org/fhir/valueset-account-status.html">https://www.hl7.org/fhir/valueset-account-status.html</a></div>
+<div class="line">1..1</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="health-data-repository">
+<h5><span class="section-number">2.3.1.1.2. </span>Health data repository<a class="headerlink" href="#health-data-repository" title="Permalink to this headline">¶</a></h5>
+<p>A repository used by Country A for storing health information and information about the
+issued health certificates.</p>
+<p>The system may be part of an Immunization Information System (IIS), a laboratory system or
+it may be stored by national, regional or local electronic health record systems, or on
+paper. The system may be centralised on the national level or it may be largely
+distributed.</p>
+<p>Every Country A may use their own arrangements for establishing and maintaining the health
+data repository. An overall description of the arrangements shall be made publicly
+available by each Country A.</p>
+</div>
+<div class="section" id="signing-key-issuance-service">
+<h5><span class="section-number">2.3.1.1.3. </span>Signing key issuance service<a class="headerlink" href="#signing-key-issuance-service" title="Permalink to this headline">¶</a></h5>
+<p>A service such as a Certificate Authority (CA) or another arrangement used by Country A for issuing signing key pairs or certificates, to be used for signing health certificates.</p>
+<p>The term “signing key” in this document refers to keys or certificates issued to legal and natural persons and used for creating electronic seals and signatures. No difference is made between electronic signatures and electronic seals in this document, and the terms “signature” and “signing” are used to refer to both of them.</p>
+<p>Country A may use any public or private CA (or another option) in order to issue signing keys or certificates used for signing health certificates.</p>
+</div>
+<div class="section" id="signing-keys-or-certificates">
+<h5><span class="section-number">2.3.1.1.4. </span>Signing keys or certificates<a class="headerlink" href="#signing-keys-or-certificates" title="Permalink to this headline">¶</a></h5>
+<p>Digital signature keys or certificates used by Country A for signing health certificates.</p>
+<p>Signing keys or certificates shall only be provided to entities with active authorisation according to the published List of authorised issuers.</p>
+<p>Member States should have a clear policy for revocation of health certificates, including refresh rates for verifiers.</p>
+</div>
+<div class="section" id="provision-of-keys-with-metadata">
+<h5><span class="section-number">2.3.1.1.5. </span>Provision of keys with metadata<a class="headerlink" href="#provision-of-keys-with-metadata" title="Permalink to this headline">¶</a></h5>
+<p>A process executed by Country A in order to register the signing keys or certificates to the EU Public Key Directory/Gateway (see 3.1.3.1 below).</p>
+<p>The process and related procedures for the secure registration of public keys or certificates will be defined by the eHealth Network.</p>
+</div>
+<div class="section" id="health-certificate-issuance-service">
+<h5><span class="section-number">2.3.1.1.6. </span>Health certificate issuance service<a class="headerlink" href="#health-certificate-issuance-service" title="Permalink to this headline">¶</a></h5>
+<p>A service used by Country A for issuing health certificates and delivering them to certificate holders.</p>
+<p>The service may be implemented as a patient-facing app, as a patient portal, as a healthcare professional portal, or it may be integrated to another national, regional or local system.</p>
+<p>Every Country A shall implement at least one health certificate issuance service. Health certificates shall only be issued by entities with active authorisation according to the published List of authorised issuers.</p>
+</div>
+<div class="section" id="health-certificate-revocation-list-hcrl">
+<h5><span class="section-number">2.3.1.1.7. </span>Health certificate revocation list (HCRL)<a class="headerlink" href="#health-certificate-revocation-list-hcrl" title="Permalink to this headline">¶</a></h5>
+<p>A system used by Country A for publishing information about revoked health certificates.</p>
+<p>Each Country A shall publish one and only one aggregate list of all revoked health certificates. Country A is responsible for putting its revoked certificates on the list and signing it using one of its signing keys controlled by the PHA.</p>
+</div>
+<div class="section" id="online-verification-webapp-browser-based-for-future-consideration">
+<h5><span class="section-number">2.3.1.1.8. </span>Online verification (webapp, browser-based) – for future consideration<a class="headerlink" href="#online-verification-webapp-browser-based-for-future-consideration" title="Permalink to this headline">¶</a></h5>
+<p>An online system (website/webapp, to be accessed using a browser) that may be used by verifiers for ascertaining the validity of health certificates presented by their holders.</p>
+<p>Country A shall not make the use of the online verification webapp mandatory for the verification of health certificates.</p>
+<p>Every Country A may make an online verification webapp available. A Country providing such a webapp should make exactly one online verification webapp available.</p>
+<p>More detailed specifications are to be provided in the next revisions of this Trust Framework.</p>
+</div>
+<div class="section" id="online-verification-endpoint-api-for-future-consideration">
+<h5><span class="section-number">2.3.1.1.9. </span>Online verification (endpoint, API) – for future consideration<a class="headerlink" href="#online-verification-endpoint-api-for-future-consideration" title="Permalink to this headline">¶</a></h5>
+<p>An online system (such as a RESTful API) that may be used by verifiers for ascertaining the validity of health certificates presented by their holders.</p>
+<p>Country A shall not make the use of the online verification endpoint mandatory for the verification of health certificates.</p>
+<p>Every Country A may make an online verification endpoint available. Countries A providing an endpoint should make exactly one online verification endpoint available.</p>
+<p>More detailed specifications are to be provided in the next revisions of this Trust Framework.</p>
+</div>
+<div class="section" id="online-verification-phone-service">
+<h5><span class="section-number">2.3.1.1.10. </span>Online verification (phone service)<a class="headerlink" href="#online-verification-phone-service" title="Permalink to this headline">¶</a></h5>
+<p>A phone service that may be established by Country A for enabling verifiers to check the validity of health certificates presented by their holders.</p>
+<p>The service may be implemented through the national contact points for cross-border healthcare. The answer to a verification request should be provided within 2 working days.</p>
+</div>
+</div>
+<div class="section" id="country-b-country-of-verification">
+<h4><span class="section-number">2.3.1.2. </span>Country B (country of verification)<a class="headerlink" href="#country-b-country-of-verification" title="Permalink to this headline">¶</a></h4>
+<p>The country of verification is responsible for verifying health certificates presented by their holders. The Country B shall accept valid health certificates that are issued following this Trust Framework.</p>
+<div class="section" id="list-of-certified-verifiers">
+<h5><span class="section-number">2.3.1.2.1. </span>List of certified verifiers<a class="headerlink" href="#list-of-certified-verifiers" title="Permalink to this headline">¶</a></h5>
+<p>Specifications are to be provided in the next revisions of this Trust Framework.</p>
+</div>
+<div class="section" id="fetch-and-use">
+<h5><span class="section-number">2.3.1.2.2. </span>Fetch and use<a class="headerlink" href="#fetch-and-use" title="Permalink to this headline">¶</a></h5>
+<p>This is a process executed by Country B in order to retrieve information from the EU Public Key Directory/Gateway.</p>
+</div>
+<div class="section" id="trusted-signing-public-keys-certificates-or-cas">
+<h5><span class="section-number">2.3.1.2.3. </span>Trusted signing public keys, certificates or CAs<a class="headerlink" href="#trusted-signing-public-keys-certificates-or-cas" title="Permalink to this headline">¶</a></h5>
+<p>Signing keys are fetched by Country B from the EU Public Key Directory/Gateway and trusted by Country B.</p>
+<p>All public keys and certificates marked as valid in the EU Public Key Directory/Gateway by Country A shall be trusted by Country B. If Country A has uploaded a public key certificate of a Certificate Authority (CA), all certificates issued by this CA shall be trusted by Country B.</p>
+</div>
+<div class="section" id="vaccination-certificate-verifier-app">
+<h5><span class="section-number">2.3.1.2.4. </span>Vaccination certificate verifier app<a class="headerlink" href="#vaccination-certificate-verifier-app" title="Permalink to this headline">¶</a></h5>
+<p>These are application(s) that are used by verifiers for ascertaining the validity of certificates presented by their holders.</p>
+<p>In this version of the Trust Framework, only offline verification is supported. All verifier apps shall support offline verification.</p>
+</div>
+</div>
+<div class="section" id="central-services">
+<h4><span class="section-number">2.3.1.3. </span>Central services<a class="headerlink" href="#central-services" title="Permalink to this headline">¶</a></h4>
+<p>The central services provide a process and a gateway for sharing trust anchors (public keys or certificates) between Countries A and B.</p>
+<p>Before the gateway is implemented, Country B may request trust anchors directly from Country A through a mechanism ensuring the authenticity and integrity of this data, for example through the use of secure email or by downloading the information from the PHA’s website of Country A.</p>
+<p>After the implementation of the central services, the use of the direct trust establishment mechanism shall be discontinued.</p>
+<div class="section" id="eu-public-key-directory-gateway">
+<h5><span class="section-number">2.3.1.3.1. </span>EU Public Key Directory/Gateway<a class="headerlink" href="#eu-public-key-directory-gateway" title="Permalink to this headline">¶</a></h5>
+<p>A directory that contains information about public keys or certificates published by Country A, as well as their metadata, and acts as a gateway used for providing trust information to national systems.</p>
+<p>The directory shall be provided by a public sector body, such as the European Commission.</p>
+<p>The directory shall be derived from the Lists of authorised issuers published by all Countries A. The contents shall be made publicly available. The list shall not contain personal information such as names of health professionals.</p>
+<p>A flat structure could be foreseen for the PKD; further considerations are ongoing.</p>
+<p>Country B shall ensure that the contents downloaded from the EU Public Key Directory (EU PKD) are regularly distributed to the verifier apps.</p>
+</div>
+</div>
+</div>
+<div class="section" id="legal-basis">
+<h3><span class="section-number">2.3.2. </span>Legal basis<a class="headerlink" href="#legal-basis" title="Permalink to this headline">¶</a></h3>
+<p>The trust framework described in this document is also subject to legal considerations.</p>
+<p>As <em>some of the processing operations described involve personal data</em> (e.g. issuance and verification of certificates) such processing will fall under the scope of the General Data Protection Regulation (GDPR)footnote:[OJ L 119, 4.5.2016, p.1].</p>
+<p>GDPR provides for obligations on controllers (entities determining the purposes and means of processing of personal data, here e.g. organisations issuing and verifying vaccination certificates), such as to have a <em>legal basis</em> for their processing operations, <strong>document them</strong>, implement <strong>appropriate security measures</strong>, and to <em>inform data subjects</em> (natural persons data relating to whom are processed). It also provides rights for data subjects, such as the right to access the data controllers hold about them and to have it corrected. Additionally, GDPR establishes rules for <em>transfers</em> of personal data outside the EU/EEA.</p>
+</div>
+</div>
+<div class="section" id="data-formats">
+<h2><span class="section-number">2.4. </span>Data formats<a class="headerlink" href="#data-formats" title="Permalink to this headline">¶</a></h2>
+<p>.A proposal for data encoding and representation
+image::ehealth_figure4.jpg[]</p>
+<div class="section" id="utf-8">
+<h3><span class="section-number">2.4.1. </span>UTF-8<a class="headerlink" href="#utf-8" title="Permalink to this headline">¶</a></h3>
+<p>UTF-8 will be used for character encoding.</p>
+</div>
+<div class="section" id="fhir">
+<h3><span class="section-number">2.4.2. </span>FHIR<a class="headerlink" href="#fhir" title="Permalink to this headline">¶</a></h3>
+<p>The Fast Healthcare Interoperability Resources (FHIR) standard data format is recommended to be used for expressing relevant health data. The data will be converted though appropriate mapping definitions to form the machine readable part of the certificate dataset using the JavaScript Object Notation (JSON) for data representation.</p>
+</div>
+<div class="section" id="cbor-cose">
+<h3><span class="section-number">2.4.3. </span>CBOR/COSE<a class="headerlink" href="#cbor-cose" title="Permalink to this headline">¶</a></h3>
+<p>The Concise Binary Object Representation (CBOR; RFC 8949) will be used for serializing the JSON data representation as binary data. The CBOR Object Signing and Encryption (COSE; RFC 8152) specification will be then used for digitally signing the machine readable certificate data.</p>
+</div>
+</div>
+<div class="section" id="presentation-formats">
+<h2><span class="section-number">2.5. </span>Presentation formats<a class="headerlink" href="#presentation-formats" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="d-barcode">
+<h3><span class="section-number">2.5.1. </span>2D Barcode<a class="headerlink" href="#d-barcode" title="Permalink to this headline">¶</a></h3>
+<p>Only 2D barcodes whose symbology is specified as an ISO standard SHALL be used. ISO standardized 2D barcodes symbologies include DataMatrix [ISO/IEC 16022], Aztec Codes [ISO/IEC 24778], and QR Codes [ISO/IEC 18004]. However, it is RECOMMENDED that the barcode is encoded as an Aztec code. Verifiers shall support all specified types of 2D barcodes.</p>
+</div>
+<div class="section" id="w3c-verifiable-credentials">
+<h3><span class="section-number">2.5.2. </span>W3C Verifiable Credentials<a class="headerlink" href="#w3c-verifiable-credentials" title="Permalink to this headline">¶</a></h3>
+<p>Decision about W3C Verifiable credentials to be made later.</p>
+</div>
+</div>
+<div class="section" id="cryptography">
+<h2><span class="section-number">2.6. </span>Cryptography<a class="headerlink" href="#cryptography" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-signing">
+<h3><span class="section-number">2.6.1. </span>Data signing<a class="headerlink" href="#data-signing" title="Permalink to this headline">¶</a></h3>
+<p>The CBOR Object Signing and Encryption (COSE) specifications will be used for digitally signing the machine readable certificate data.</p>
+<p>To meet the timeline of this effort, and to ensure reliable and secure implementations of the technical specifications, the primary signing scheme for digital signatures supported by the trust framework is EC-DSA (Elliptic-Curve Digital Signature Algorithm) for cross-border use where unlinkability does not apply. As a fallback, RSA is also supportedfootnote:[The RSA signing scheme should only be used if it is absolutely necessary, as it adds an around 50% size overhead to the resulting health certificate.].</p>
+<p>To further address the development of a privacy preserving approach for the anticipated domestic use case, adding further cryptographic schemes such as CL or BBS+ will be supported outside of cross border scenarios.</p>
+</div>
+<div class="section" id="data-encryption">
+<h3><span class="section-number">2.6.2. </span>Data encryption<a class="headerlink" href="#data-encryption" title="Permalink to this headline">¶</a></h3>
+<p>Data encryption of the machine readable part of the certificates will not be used. Selected disclosure of information can be implemented using other mechanisms. Adding data encryption of individual fields would increase complexity associated with key management.</p>
+</div>
+</div>
+<div class="section" id="verification-protocols">
+<h2><span class="section-number">2.7. </span>Verification protocols<a class="headerlink" href="#verification-protocols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="offline">
+<h3><span class="section-number">2.7.1. </span>Offline<a class="headerlink" href="#offline" title="Permalink to this headline">¶</a></h3>
+<p>Offline verification shall be supported. By the term offline we refer to the scenario where the verifier requires at the time of the verification needs no online access to external resources (such as a call centre or a webapp) to perform the verification. Instead, the digital signature included in the 2D barcode will be verified through dedicated verification software. Signature verification will include (1) the verification of its validity against the provided public key and (2) the check that the public key is on the list of trusted keys held by the verifier app. The list will be fetched periodically from the EU PKD, however in the first phases of deployment, direct exchanges of keys may be used, as described in Section 3.1.3. Once this digital signature has been verified, the verification software can decode the information in the 2D barcode and rely on its content.</p>
+</div>
+<div class="section" id="online">
+<h3><span class="section-number">2.7.2. </span>Online<a class="headerlink" href="#online" title="Permalink to this headline">¶</a></h3>
+<p>Online verification will rely on the UVCI and it will be incorporated in the next version of the specifications (V2).</p>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Annotated eHealth Network Trust Framework</a><ul>
+<li><a class="reference internal" href="#introduction">2.1. Introduction</a></li>
+<li><a class="reference internal" href="#business-needs-and-requirements">2.2. Business needs and requirements</a><ul>
+<li><a class="reference internal" href="#main-design-principles-and-business-requirements">2.2.1. Main design principles and business requirements</a></li>
+<li><a class="reference internal" href="#user-roles">2.2.2. User roles</a></li>
+<li><a class="reference internal" href="#id-binding-and-verification">2.2.3. ID binding and verification</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#trust-architecture">2.3. Trust architecture</a><ul>
+<li><a class="reference internal" href="#overall-description">2.3.1. Overall description</a><ul>
+<li><a class="reference internal" href="#country-a-country-of-issuance">2.3.1.1. Country A (country of issuance)</a><ul>
+<li><a class="reference internal" href="#list-of-authorised-issuers">2.3.1.1.1. List of authorised issuers</a></li>
+<li><a class="reference internal" href="#health-data-repository">2.3.1.1.2. Health data repository</a></li>
+<li><a class="reference internal" href="#signing-key-issuance-service">2.3.1.1.3. Signing key issuance service</a></li>
+<li><a class="reference internal" href="#signing-keys-or-certificates">2.3.1.1.4. Signing keys or certificates</a></li>
+<li><a class="reference internal" href="#provision-of-keys-with-metadata">2.3.1.1.5. Provision of keys with metadata</a></li>
+<li><a class="reference internal" href="#health-certificate-issuance-service">2.3.1.1.6. Health certificate issuance service</a></li>
+<li><a class="reference internal" href="#health-certificate-revocation-list-hcrl">2.3.1.1.7. Health certificate revocation list (HCRL)</a></li>
+<li><a class="reference internal" href="#online-verification-webapp-browser-based-for-future-consideration">2.3.1.1.8. Online verification (webapp, browser-based) – for future consideration</a></li>
+<li><a class="reference internal" href="#online-verification-endpoint-api-for-future-consideration">2.3.1.1.9. Online verification (endpoint, API) – for future consideration</a></li>
+<li><a class="reference internal" href="#online-verification-phone-service">2.3.1.1.10. Online verification (phone service)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#country-b-country-of-verification">2.3.1.2. Country B (country of verification)</a><ul>
+<li><a class="reference internal" href="#list-of-certified-verifiers">2.3.1.2.1. List of certified verifiers</a></li>
+<li><a class="reference internal" href="#fetch-and-use">2.3.1.2.2. Fetch and use</a></li>
+<li><a class="reference internal" href="#trusted-signing-public-keys-certificates-or-cas">2.3.1.2.3. Trusted signing public keys, certificates or CAs</a></li>
+<li><a class="reference internal" href="#vaccination-certificate-verifier-app">2.3.1.2.4. Vaccination certificate verifier app</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#central-services">2.3.1.3. Central services</a><ul>
+<li><a class="reference internal" href="#eu-public-key-directory-gateway">2.3.1.3.1. EU Public Key Directory/Gateway</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#legal-basis">2.3.2. Legal basis</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#data-formats">2.4. Data formats</a><ul>
+<li><a class="reference internal" href="#utf-8">2.4.1. UTF-8</a></li>
+<li><a class="reference internal" href="#fhir">2.4.2. FHIR</a></li>
+<li><a class="reference internal" href="#cbor-cose">2.4.3. CBOR/COSE</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#presentation-formats">2.5. Presentation formats</a><ul>
+<li><a class="reference internal" href="#d-barcode">2.5.1. 2D Barcode</a></li>
+<li><a class="reference internal" href="#w3c-verifiable-credentials">2.5.2. W3C Verifiable Credentials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cryptography">2.6. Cryptography</a><ul>
+<li><a class="reference internal" href="#data-signing">2.6.1. Data signing</a></li>
+<li><a class="reference internal" href="#data-encryption">2.6.2. Data encryption</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verification-protocols">2.7. Verification protocols</a><ul>
+<li><a class="reference internal" href="#offline">2.7.1. Offline</a></li>
+<li><a class="reference internal" href="#online">2.7.2. Online</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter"><span class="section-number">1. </span>Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="privacycred.html"
+                        title="next chapter"><span class="section-number">3. </span>PrivacyCred system</a></p>
+<form class="search" action="../search.html" method="get">
+  <input type="text" name="q"
+   placeholder="type to search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="related bottom">
+  <nav id="rellinks">
+    <ul>
+        <li>
+          «
+          <a href="introduction.html" title="Previous document"><span class="section-number">1. </span>Introduction</a>
+        </li>
+        <li>
+          <a href="privacycred.html" title="Next document"><span class="section-number">3. </span>PrivacyCred system</a>
+          »
+        </li>
+    </ul>
+  </nav>
+  <nav id="breadcrumbs">
+    <ul>
+      <li><a href="../index.html">Home</a></li> 
+    </ul>
+  </nav>
+  </div>
+  <footer id="pagefooter">&copy; 2021, Jesus Ruiz.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a>
+      3.5.3
+        with the <a href="http://github.com/irskep/sphinx-better-theme">
+          better</a> theme.
+
+  </footer>
+
+<script>
+  $(function () {
+
+    // Make table with borders
+    $("table.docutils").addClass("table table-bordered")
+    $("table.docutils").removeClass("docutils")
+
+    // Format the footnotes as rows
+    // $("dl.footnote.brackets").addClass("row")
+    // $("dl.footnote.brackets>dt").addClass("col-sm-1")
+    // $("dl.footnote.brackets>dd").addClass("col-sm-11")
+
+    // $("dl.footnote.brackets>dt>span>a").removeClass("fn-backref")
+    // $("dl.footnote.brackets>dt>span").removeClass("brackets")
+    // $("dl.footnote.brackets>dt").removeClass("label")
+    // $("dl.footnote.brackets").removeClass("brackets")
+
+
+    
+
+  });
+
+</script>
+
+  
+  </body>
+</html>
