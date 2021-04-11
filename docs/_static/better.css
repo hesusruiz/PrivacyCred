@@ -799,12 +799,43 @@ p.admonition-title:after {
 
 /* responsive styles */
 
+.related .movil {
+    display: none;
+}
+.related .ordenador {
+    display: inline;
+}
+
+.floatright {
+    float:right;
+}
+
 @media (max-width: 820px) {
     /* kill the sidebar */
     .bodywrapper { margin: 0; }
     .sphinxsidebar {
         display: none;
     }
+
+    nav#rellinks li+li:before {
+        content: "";
+    }
+
+    #breadcrumbs {
+        display: none;
+    }
+    .related .movil {
+        display: inline;
+    }
+    .related .ordenador {
+        display: none;
+    }
+
+    .related {
+        line-height: normal;
+    }
+
+
     header#pageheader, footer#pagefooter, .related, .document {
         margin: 0 1rem;
         width: calc(100% - 2rem);
