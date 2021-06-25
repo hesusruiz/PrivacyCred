@@ -1,5 +1,5 @@
 References
 ==========
 
-.. bibliography::
-    :style: unsrt
+.. include:: /bibliography_list.result
+

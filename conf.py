@@ -31,8 +31,6 @@ version = "0.9.3"
 # ones.
 extensions = [
     "helloworld",
-    "sphinxcontrib.bibtex",
-    "sphinx_rtd_theme",
     "sphinxcontrib.httpdomain",
     "sphinx.ext.graphviz"
 ]

@@ -1,0 +1,8 @@
+.. _citep1:
+
+[1] M. Castro, B. Liskov, *Practical byzantine fault tolerance and proactive recovery*, ACM Transactions on Computer Systems, 2002.
+
+.. _citep2:
+
+[2] D. Dolev, N. Lynch et al, *Reaching approximate agreement in the presence of faults*, Journal of the ACM, 1986.
+

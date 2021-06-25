@@ -3,8 +3,9 @@
 Introduction
 ============
 
+
 We describe how PrivacyCred matches the requirements from the eHealth Network, described in the document `Interoperability of health certificates Trust framework`_.
-PrivacyCred is a generic credential system which is designed to be secure, privacy-preserving, scalable, performant and robust.
+PrivacyCred is a generic credential system which is designed to be secure, privacy-preserving, scalable, performant and robust :citep:`DolevEtAl1986`.
 
 .. _Interoperability of health certificates Trust framework: https://ec.europa.eu/health/sites/health/files/ehealth/docs/trust-framework_interoperability_certificates_en.pdf
 
